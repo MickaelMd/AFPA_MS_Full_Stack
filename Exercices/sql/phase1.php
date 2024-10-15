@@ -190,87 +190,237 @@
 
     // 15.Afficher le nom des employés commençant par la lettre « H ».
 
+    $ex15 = employe("WHERE nom LIKE 'h%'");
+
+    foreach ($ex15 as $ex) {
+        echo $ex['nom'] . '</br>';
+    }
 
 
     echo '<hr>';
 
     // 16.Afficher le nom des employés se terminant par la lettre « n ».
 
+    $ex16 = employe("WHERE nom LIKE '%n'");
+    
+    foreach ($ex16 as $ex) {
+        echo $ex['nom'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 17.Afficher le nom des employés contenant la lettre « u » en 3ème
     // position.
 
+    $ex17 = employe("WHERE nom LIKE '__u%'");
+    
+    foreach ($ex17 as $ex) {
+        echo $ex['nom'] . '</br>';
+    }
+
+
+    echo '<hr>';
 
     // 18.Afficher le salaire et le nom des employés du service 41 classés par
     // salaire croissant.
 
+    $ex18 = employe("WHERE nodep = 41 ORDER BY 'salaire'");
+    
+    foreach ($ex18 as $ex) {
+        echo $ex['nom'] . ' ' . $ex['salaire'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 19.Afficher le salaire et le nom des employés du service 41 classés par
     // salaire décroissant.
 
+    $ex19 = employe("WHERE nodep = 41 ORDER BY salaire ASC");
+
+    foreach ($ex19 as $ex19s) {
+        echo $ex19s['nom'] . ' ' . $ex19s['salaire'] . '</br>';
+    }
+
+
+    echo '<hr>';
 
     // 20.Afficher le titre, le salaire et le nom des employés classés par titre
     // croissant et par salaire décroissant.
 
+    $ex20 = employe("ORDER BY titre AND salaire ASC");
+
+    foreach ($ex20 as $ex) {
+        echo $ex['titre'] . ' ' . $ex['salaire'] . ' ' . $ex['nom'] . '</br>';
+    }
+
+    echo '<hr>';
+
     // 21.Afficher le taux de commission, le salaire et le nom des employés
     // classés par taux de commission croissante. 
+
+    $ex21 = employe("ORDER BY tauxcom");
+
+    foreach ($ex21 as $ex) {
+        echo $ex['tauxcom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['nom'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 22.Afficher le nom, le salaire, le taux de commission et le titre des
     // employés dont le taux de commission n'est pas renseigné.
 
+    $ex22 = employe("WHERE tauxcom IS NULL");
+
+    foreach ($ex22 as $ex) {
+        echo $ex['tauxcom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['nom'] . '</br>';
+    }
+
+
+    echo '<hr>';
 
     // 23.Afficher le nom, le salaire, le taux de commission et le titre des
     // employés dont le taux de commission est renseigné.
 
 
+    $ex23 = employe("WHERE tauxcom IS NOT NULL");
+
+    foreach ($ex23 as $ex) {
+        echo $ex['tauxcom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['nom'] . '</br>';
+    }
+
+    echo '<hr>';
+
     // 24.Afficher le nom, le salaire, le taux de commission, le titre des
     // employés dont le taux de commission est inférieur à 15.
 
+    $ex24 = employe("WHERE tauxcom > 15");
+
+    foreach ($ex24 as $ex) {
+        echo $ex['nom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['tauxcom'] . ' - ' . $ex['titre'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 25. Afficher le nom, le salaire, le taux de commission, le titre des
     // employés dont le taux de commission est supérieur à 15. 
 
+    $ex25 = employe("WHERE tauxcom < 15");
+
+    foreach ($ex25 as $ex) {
+        echo $ex['nom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['tauxcom'] . ' - ' . $ex['titre'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 26.Afficher le nom, le salaire, le taux de commission et la commission des
     // employés dont le taux de commission n'est pas nul. (la commission
     // est calculée en multipliant le salaire par le taux de commission)
 
 
+    $sqlQueryy = "SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex26com FROM employe WHERE tauxcom IS NOT NULL";
+        $employeStatement = $mysqlClient->prepare($sqlQueryy);
+        $employeStatement->execute();
+        $ex26 = $employeStatement->fetchAll();
+
+    foreach ($ex26 as $ex) {
+        
+        echo $ex['nom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['tauxcom'] . ' - ' . $ex['ex26com'] . '</br>';
+    }
+
+    echo '<hr>';
+
     // 27. Afficher le nom, le salaire, le taux de commission, la commission des
     // employés dont le taux de commission n'est pas nul, classé par taux de
     // commission croissant. 
 
+    $sqlQueryy = "SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex27com FROM employe WHERE tauxcom IS NOT NULL ORDER BY tauxcom";
+    $employeStatement = $mysqlClient->prepare($sqlQueryy);
+    $employeStatement->execute();
+    $ex27 = $employeStatement->fetchAll();
+
+foreach ($ex27 as $ex) {
+    
+    echo $ex['nom'] . ' - ' . $ex['salaire'] . ' - ' . $ex['tauxcom'] . ' - ' . $ex['ex27com'] . '</br>';
+}
+
+    echo '<hr>';
     
     // 28. Afficher le nom et le prénom (concaténés) des employés. Renommer
     // les colonnes.
 
+    $sqlQueryy = "SELECT CONCAT(nom, ' ', prenom) AS newcol FROM employe";
+        $employeStatement = $mysqlClient->prepare($sqlQueryy);
+        $employeStatement->execute();
+        $ex28 = $employeStatement->fetchAll();
+
+        foreach ($ex28 as $ex) {
+            echo $ex['newcol'] . '</br>';
+        }
+
+    echo '<hr>';
 
     // 29. Afficher les 5 premières lettres du nom des employés.
 
+    $sqlQueryy = "SELECT SUBSTRING(nom, 1, 5) AS newcol FROM employe";
+    $employeStatement = $mysqlClient->prepare($sqlQueryy);
+    $employeStatement->execute();
+    $ex29 = $employeStatement->fetchAll();
+
+    foreach ($ex29 as $ex) {
+        
+        echo $ex['newcol'] . '</br>';
+    }
+
+
+    echo '<hr>';
 
     // 30. Afficher le nom et le rang de la lettre « r » dans le nom des
     // employés.
 
 
+    $sqlQueryy = "SELECT nom, INSTR(nom, 'r') AS rang FROM employe WHERE INSTR(nom, 'r') > 0;";
+    $employeStatement = $mysqlClient->prepare($sqlQueryy);
+    $employeStatement->execute();
+    $ex30 = $employeStatement->fetchAll();
+
+    foreach ($ex30 as $ex) {
+        
+        echo $ex['nom'] . ' - ' . $ex['rang'] . '</br>';
+    }
+
+    echo '<hr>';
+
     // 31. Afficher le nom, le nom en majuscule et le nom en minuscule de
     // l'employé dont le nom est Vrante.
 
+    $sqlQueryy = "SELECT nom, UPPER(nom) AS nommaj, LOWER(nom) AS nommin FROM employe WHERE nom = 'Vrante'";
+    $employeStatement = $mysqlClient->prepare($sqlQueryy);
+    $employeStatement->execute();
+    $ex31 = $employeStatement->fetchAll();
+
+    foreach ($ex31 as $ex) {
+        
+        echo $ex['nom'] . ' - ' . $ex['nommaj'] . ' - ' . $ex['nommin'] . '</br>';
+    }
+
+    echo '<hr>';
 
     // 32. Afficher le nom et le nombre de caractères du nom des employés.
 
+    $sqlQueryy = "SELECT nom, LENGTH(nom) AS nomnum FROM employe";
+    $employeStatement = $mysqlClient->prepare($sqlQueryy);
+    $employeStatement->execute();
+    $ex32 = $employeStatement->fetchAll();
+
+    foreach ($ex32 as $ex) {
+        
+        echo $ex['nom'] . ' - ' . $ex['nomnum'] . '</br>';
+    }
+
+    echo '<hr>';
     ?>
 
 
 </body>
 
 </html>
-
-
-
-
-
-<!-- // $req = $mysqlClient->prepare('SELECT id, libelle, active FROM categorie WHERE id = :id');
-    // $req->execute([
-    //     'id' => (int) $id,
-    // ]);
-    // $resultat = $req->fetch(); -->
