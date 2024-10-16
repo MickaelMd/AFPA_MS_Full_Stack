@@ -37,6 +37,8 @@
     
     // 1. Afficher toutes les informations concernant les employés. 
     
+    echo '<p class="sql"> SELECT * FROM `employe`; </p>';
+
     $sqlQueryy = "SELECT * FROM `employe`";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
     $employeStatement->execute();
@@ -51,6 +53,8 @@
     echo '<hr>';
 
     // 2. Afficher toutes les informations concernant les départements. 
+
+    echo '<p class="sql">SELECT * FROM `dept`;</p>';
 
     $sqlQueryy = "SELECT * FROM `dept`";
     $deptStatement = $mysqlClient->prepare($sqlQueryy);
@@ -67,6 +71,8 @@
  
     //3. Afficher le nom, la date d'embauche, le numéro du supérieur, le numéro de département et le salaire de tous les employés. 
 
+    echo '<p class="sql">SELECT nom, dateemb, nosup, nodep, salaire FROM `employe`;</p>';
+
     $sqlQueryy = "SELECT nom, dateemb, nosup, nodep, salaire FROM `employe`";
     $deptdeuxStatement = $mysqlClient->prepare($sqlQueryy);
     $deptdeuxStatement->execute();
@@ -82,6 +88,8 @@
     // 4. Afficher le titre de tous les employés.
     // 5. Afficher les différentes valeurs des titres des employés. 
 
+    echo '<p class="sql">SELECT DISTINCT titre FROM `employe`;</p>';
+
     $sqlQueryy = "SELECT DISTINCT titre FROM `employe`";
     $titreempStatement = $mysqlClient->prepare($sqlQueryy);
     $titreempStatement->execute();
@@ -96,6 +104,9 @@
     // 6. Afficher le nom, le numéro d'employé et le numéro du
     // département des employés dont le titre est « Secrétaire ».
 
+    echo '<p class="sql">SELECT nom, prenom FROM `employe` WHERE titre = \'secrétaire\';</p>';  // -----------------------------------------------------------------------
+
+
     $secretaire = employe("WHERE titre = 'secrétaire'");
 
     foreach ($secretaire as $scr) {
@@ -107,6 +118,7 @@
     // 7. Afficher le nom et le numéro de département dont le numéro de
     // département est supérieur à 40. 
 
+    echo '<p class="sql">SELECT nom, nodept FROM `dept` WHERE nodept > 40;</p>';
 
     $sqlQueryy = "SELECT * FROM `dept` WHERE nodept > 40";
     $dept40Statement = $mysqlClient->prepare($sqlQueryy);
@@ -123,6 +135,8 @@
     // 8. Afficher le nom et le prénom des employés dont le nom est
     // alphabétiquement antérieur au prénom. 
 
+    echo '<p class="sql">SELECT nom, prenom FROM `employe` WHERE nom < prenom;</p>';
+
     $empAlpha = employe('WHERE nom < prenom');
 
     foreach ($empAlpha as $emp) {
@@ -135,6 +149,8 @@
     // dont le titre est « Représentant », le numéro de département est 35 et
     // le salaire est supérieur à 20000.
 
+    echo '<p class="sql">SELECT nom, salaire, nodep FROM `employe` WHERE salaire > 20000 AND titre = \'Représentant\' AND nodep = 35;</p>';
+
     $ex9 = employe("WHERE salaire > 20000 AND titre = 'Représentant' AND nodep = 35");
 
     foreach ($ex9 as $ex) {
@@ -145,6 +161,8 @@
 
     // 10.Afficher le nom, le titre et le salaire des employés dont le titre est
     // « Représentant » ou dont le titre est « Président ». 
+
+    echo '<p class="sql">SELECT nom, titre, salaire FROM `employe` WHERE titre = \'Représentant\' || titre = \'Président\';</p>';
 
     $ex10 = employe("WHERE titre = 'Représentant' || titre = 'Président'");
 
@@ -158,6 +176,7 @@
     // employés du département 34, dont le titre est « Représentant » ou
     // « Secrétaire ».
 
+    echo '<p class="sql">SELECT nom, titre, nodep, salaire FROM `employe` WHERE nodep = 34 AND titre = \'Représentant\' || titre = \'Secrétaire\';</p>';
 
     $ex11 = employe("WHERE nodep = 34 AND titre = 'Représentant' || titre = 'Secrétaire'");
     foreach ($ex11 as $ex11) {
@@ -176,6 +195,8 @@
     // 13.Afficher le nom, et le salaire des employés dont le salaire est compris
     // entre 20000 et 30000. 
 
+    echo '<p class="sql">SELECT nom, salaire FROM `employe` WHERE salaire > 20000 AND salaire < 30000;</p>';
+
     $ex13 = employe("WHERE salaire > 20000 AND salaire < 30000");
     
     foreach ($ex13 as $ex13a) {
@@ -190,6 +211,8 @@
 
     // 15.Afficher le nom des employés commençant par la lettre « H ».
 
+    echo '<p class="sql">SELECT nom FROM `employe` WHERE nom LIKE \'h%\';</p>';
+
     $ex15 = employe("WHERE nom LIKE 'h%'");
 
     foreach ($ex15 as $ex) {
@@ -201,6 +224,8 @@
 
     // 16.Afficher le nom des employés se terminant par la lettre « n ».
 
+    echo '<p class="sql">SELECT nom FROM `employe` WHERE nom LIKE \'%n\';</p>';
+
     $ex16 = employe("WHERE nom LIKE '%n'");
     
     foreach ($ex16 as $ex) {
@@ -211,6 +236,8 @@
 
     // 17.Afficher le nom des employés contenant la lettre « u » en 3ème
     // position.
+
+    echo '<p class="sql">SELECT nom FROM `employe` WHERE nom LIKE \'__u%\';</p>';
 
     $ex17 = employe("WHERE nom LIKE '__u%'");
     
@@ -224,6 +251,8 @@
     // 18.Afficher le salaire et le nom des employés du service 41 classés par
     // salaire croissant.
 
+    echo '<p class="sql">SELECT nom, salaire FROM `employe` WHERE nodep = 41 ORDER BY \'salaire\';</p>';
+
     $ex18 = employe("WHERE nodep = 41 ORDER BY 'salaire'");
     
     foreach ($ex18 as $ex) {
@@ -234,6 +263,8 @@
 
     // 19.Afficher le salaire et le nom des employés du service 41 classés par
     // salaire décroissant.
+
+    echo '<p class="sql">SELECT nom, salaire FROM `employe` WHERE nodep = 41 ORDER BY salaire ASC;</p>';
 
     $ex19 = employe("WHERE nodep = 41 ORDER BY salaire ASC");
 
@@ -247,6 +278,8 @@
     // 20.Afficher le titre, le salaire et le nom des employés classés par titre
     // croissant et par salaire décroissant.
 
+    echo '<p class="sql">SELECT titre, salaire, nom FROM `employe` ORDER BY titre AND salaire ASC;</p>';
+
     $ex20 = employe("ORDER BY titre AND salaire ASC");
 
     foreach ($ex20 as $ex) {
@@ -258,6 +291,8 @@
     // 21.Afficher le taux de commission, le salaire et le nom des employés
     // classés par taux de commission croissante. 
 
+    echo '<p class="sql">SELECT tauxcom, salaire, nom FROM `employe` ORDER BY tauxcom";</p>';
+
     $ex21 = employe("ORDER BY tauxcom");
 
     foreach ($ex21 as $ex) {
@@ -268,6 +303,8 @@
 
     // 22.Afficher le nom, le salaire, le taux de commission et le titre des
     // employés dont le taux de commission n'est pas renseigné.
+
+    echo '<p class="sql">SELECT tauxcom, salaire, nom FROM `employe` WHERE tauxcom IS NULL;</p>';
 
     $ex22 = employe("WHERE tauxcom IS NULL");
 
@@ -281,6 +318,8 @@
     // 23.Afficher le nom, le salaire, le taux de commission et le titre des
     // employés dont le taux de commission est renseigné.
 
+    echo '<p class="sql">SELECT tauxcom, salaire, nom FROM `employe` WHERE tauxcom IS NOT NULL;</p>';
+
 
     $ex23 = employe("WHERE tauxcom IS NOT NULL");
 
@@ -293,6 +332,8 @@
     // 24.Afficher le nom, le salaire, le taux de commission, le titre des
     // employés dont le taux de commission est inférieur à 15.
 
+    echo '<p class="sql">SELECT nom, salaire, tauxcom, titre FROM `employe` WHERE tauxcom > 15;</p>';
+
     $ex24 = employe("WHERE tauxcom > 15");
 
     foreach ($ex24 as $ex) {
@@ -303,6 +344,8 @@
 
     // 25. Afficher le nom, le salaire, le taux de commission, le titre des
     // employés dont le taux de commission est supérieur à 15. 
+
+    echo '<p class="sql">SELECT nom, salaire, tauxcom, titre FROM `employe` WHERE tauxcom < 15;</p>';
 
     $ex25 = employe("WHERE tauxcom < 15");
 
@@ -316,6 +359,7 @@
     // employés dont le taux de commission n'est pas nul. (la commission
     // est calculée en multipliant le salaire par le taux de commission)
 
+    echo '<p class="sql">SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex26com FROM employe WHERE tauxcom IS NOT NULL;</p>';
 
     $sqlQueryy = "SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex26com FROM employe WHERE tauxcom IS NOT NULL";
         $employeStatement = $mysqlClient->prepare($sqlQueryy);
@@ -333,6 +377,8 @@
     // employés dont le taux de commission n'est pas nul, classé par taux de
     // commission croissant. 
 
+    echo '<p class="sql">SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex27com FROM employe WHERE tauxcom IS NOT NULL ORDER BY tauxcom;</p>';
+
     $sqlQueryy = "SELECT nom, salaire, tauxcom, salaire * tauxcom AS ex27com FROM employe WHERE tauxcom IS NOT NULL ORDER BY tauxcom";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
     $employeStatement->execute();
@@ -348,6 +394,8 @@ foreach ($ex27 as $ex) {
     // 28. Afficher le nom et le prénom (concaténés) des employés. Renommer
     // les colonnes.
 
+    echo '<p class="sql">SELECT CONCAT(nom, \' \', prenom) AS newcol FROM employe;</p>';
+
     $sqlQueryy = "SELECT CONCAT(nom, ' ', prenom) AS newcol FROM employe";
         $employeStatement = $mysqlClient->prepare($sqlQueryy);
         $employeStatement->execute();
@@ -360,6 +408,8 @@ foreach ($ex27 as $ex) {
     echo '<hr>';
 
     // 29. Afficher les 5 premières lettres du nom des employés.
+
+    echo '<p class="sql">SELECT SUBSTRING(nom, 1, 5) AS newcol FROM employe;</p>';
 
     $sqlQueryy = "SELECT SUBSTRING(nom, 1, 5) AS newcol FROM employe";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
@@ -377,6 +427,8 @@ foreach ($ex27 as $ex) {
     // 30. Afficher le nom et le rang de la lettre « r » dans le nom des
     // employés.
 
+    echo '<p class="sql">SELECT nom, INSTR(nom, \'r\') AS rang FROM employe WHERE INSTR(nom, \'r\') > 0;</p>';
+
 
     $sqlQueryy = "SELECT nom, INSTR(nom, 'r') AS rang FROM employe WHERE INSTR(nom, 'r') > 0;";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
@@ -393,6 +445,8 @@ foreach ($ex27 as $ex) {
     // 31. Afficher le nom, le nom en majuscule et le nom en minuscule de
     // l'employé dont le nom est Vrante.
 
+    echo '<p class="sql">SELECT nom, UPPER(nom) AS nommaj, LOWER(nom) AS nommin FROM employe WHERE nom = \'Vrante\';</p>';
+
     $sqlQueryy = "SELECT nom, UPPER(nom) AS nommaj, LOWER(nom) AS nommin FROM employe WHERE nom = 'Vrante'";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
     $employeStatement->execute();
@@ -406,6 +460,8 @@ foreach ($ex27 as $ex) {
     echo '<hr>';
 
     // 32. Afficher le nom et le nombre de caractères du nom des employés.
+
+    echo '<p class="sql">SELECT nom, LENGTH(nom) AS nomnum FROM employe;</p>';
 
     $sqlQueryy = "SELECT nom, LENGTH(nom) AS nomnum FROM employe";
     $employeStatement = $mysqlClient->prepare($sqlQueryy);
