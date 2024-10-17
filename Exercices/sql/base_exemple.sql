@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 15 oct. 2024 à 11:21
+-- Généré le : jeu. 17 oct. 2024 à 08:39
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -50,8 +50,10 @@ INSERT INTO `dept` (`nodept`, `nom`, `noregion`) VALUES
 ('42', 'distribution', '2'),
 ('43', 'distribution', '3'),
 ('44', 'distribution', '4'),
-('45', 'distribution', '5'),
-('50', 'administration', '1');
+('45', 'Logistique', '5'),
+('47', 'test', '14'),
+('50', 'administration', '1'),
+('51', 'NewDept', '80');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,7 @@ INSERT INTO `employe` (`noemp`, `nom`, `prenom`, `dateemb`, `nosup`, `titre`, `n
 (14, 'odlavieille', 'pacome', '2000-12-11 00:00:00', '3', 'représentant', '34', 25000, 15),
 (15, 'amartakaldire', 'quentin', '2000-12-21 00:00:00', '3', 'représentant', '35', 23000, 17),
 (16, 'traibien', 'samira', '2000-12-31 00:00:00', '6', 'secrétaire', '41', 15000, NULL),
-(17, 'fonfec', 'sophie', '2001-01-10 00:00:00', '6', 'secrétaire', '41', 14000, NULL),
+(17, 'fonfec', 'sophie', '2001-01-10 00:00:00', '6', 'secrétaire', '41', 18480, NULL),
 (18, 'fairent', 'teddy', '2001-01-20 00:00:00', '7', 'secrétaire', '42', 13000, NULL),
 (19, 'blaireur', 'terry', '2001-02-09 00:00:00', '7', 'secrétaire', '42', 13000, NULL),
 (20, 'ajerre', 'tex', '2001-02-09 00:00:00', '8', 'secrétaire', '43', 13000, NULL),
@@ -118,6 +120,16 @@ ALTER TABLE `dept`
 ALTER TABLE `employe`
   ADD PRIMARY KEY (`noemp`),
   ADD KEY `nodep` (`nodep`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `employe`
+--
+ALTER TABLE `employe`
+  MODIFY `noemp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Contraintes pour les tables déchargées

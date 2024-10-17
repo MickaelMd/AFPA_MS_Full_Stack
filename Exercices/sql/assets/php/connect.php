@@ -9,7 +9,7 @@ use Dotenv\Dotenv;
 
 try {
     $dotenv = Dotenv::createImmutable(__DIR__.'/../../../../../'); // Chemin vers le .env en dehors de du projet <---
-    // $dotenv = Dotenv::createImmutable(__DIR__.'/../../'); // .env dans Exercices/sql (non créer yet) <---
+    // $dotenv = Dotenv::createImmutable(__DIR__.'/../../../../'); // .env dans le main projet <---
     $dotenv->load();
 
     $dsn = 'mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_NAME_EXO_FS'].';charset='.$_ENV['DB_CHARSET'];
