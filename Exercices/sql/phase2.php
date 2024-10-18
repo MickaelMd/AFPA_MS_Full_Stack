@@ -274,6 +274,12 @@ echo '<hr><h4> 4. Afficher les lettres qui sont l\'initiale d\'au moins trois em
 
 echo '<p class="sql">SELECT SUBSTRING(nom, 1, 1) AS fl, SUBSTRING(prenom, 1, 1) AS sl, CONCAT(nom, \' \', prenom) AS test FROM employe ORDER BY RAND() LIMIT 3;</p>';
 
+echo '<p class="sql">SELECT SUBSTRING(nom, 1, 1) AS fl, SUBSTRING(prenom, 1, 1) AS sl, COUNT(*) AS num
+FROM employe
+GROUP BY fl, sl
+HAVING COUNT(*) >= 3;
+;</p>';
+
 
 $sqlQuery = "SELECT SUBSTRING(nom, 1, 1) AS fl, SUBSTRING(prenom, 1, 1) AS sl, CONCAT(nom, ' ', prenom) AS test FROM employe ORDER BY RAND() LIMIT 3;";
 $Statement = $mysqlClient->prepare($sqlQuery);
@@ -344,6 +350,8 @@ le nombre d\'employés. </h4>';
 
 
 echo '<p class="sql">SELECT dept.nom, COUNT(*) AS num FROM employe JOIN dept ON employe.nodep = dept.nodept GROUP BY dept.nom;</p>';
+
+
 
 
 $sqlQuery = "SELECT dept.nom, COUNT(employe.noemp) AS num FROM dept LEFT JOIN employe ON employe.nodep = dept.nodept GROUP BY dept.nom;";

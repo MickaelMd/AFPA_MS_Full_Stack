@@ -45,3 +45,31 @@ function details_disc($id) {
 
     return $disc;
 }
+
+function delete_disc($id) {
+    global $mysqlClient;
+    $sqlQuery = "DELETE FROM disc WHERE disc_id = :id";
+    $Statement = $mysqlClient->prepare($sqlQuery);
+    $Statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $Statement->execute();
+
+}
+
+function select_artist() {
+    global $mysqlClient;
+    $sqlQueryy = "SELECT artist_name FROM artist";
+    $Statement = $mysqlClient->prepare($sqlQueryy);
+    $Statement->execute();
+    $artist_list = $Statement->fetchAll();
+
+    return $artist_list;
+
+}
+
+
+
+
+
+
+
+// DELETE from employe ORDER BY noemp DESC LIMIT 1

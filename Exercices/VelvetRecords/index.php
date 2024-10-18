@@ -13,7 +13,7 @@
 
     echo '
     <div class="col-md-6 d-flex card_index justify-content-center mb-3">
-    <div class="card card_index" style="max-width: 540px;">
+    <div class="card card_index" style="max-width: 500px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="assets/img/pictures/' . htmlspecialchars($e['disc_picture']) .'" class="img-fluid w-100"
