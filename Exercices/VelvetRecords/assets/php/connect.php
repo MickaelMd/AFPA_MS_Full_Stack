@@ -57,7 +57,7 @@ function delete_disc($id) {
 
 function select_artist() {
     global $mysqlClient;
-    $sqlQueryy = "SELECT artist_name FROM artist";
+    $sqlQueryy = "SELECT artist_name, artist_id FROM artist";
     $Statement = $mysqlClient->prepare($sqlQueryy);
     $Statement->execute();
     $artist_list = $Statement->fetchAll();
@@ -66,10 +66,93 @@ function select_artist() {
 
 }
 
+function artist_id($name) {
 
+    global $mysqlClient;
+    $sqlQuery = "SELECT artist_id FROM artist WHERE artist_name = :name";
+    $Statement = $mysqlClient->prepare($sqlQuery);
+    $Statement->execute(['name' => $name]);
 
+    $artist_id = $Statement->fetch();
 
+    return $artist_id;
+}
 
+function update_disc($ids, $artist_id, $picture) {
 
+    global $mysqlClient;
+    $updateQuery = 'UPDATE disc 
+                    SET disc_title = :title, 
+                        disc_year = :year, 
+                        disc_picture = :picture, 
+                        disc_label = :label, 
+                        disc_genre = :genre, 
+                        disc_price = :price, 
+                        artist_id = :artist_id 
+                    WHERE disc_id = :id';
+                    
+    $updateStatement = $mysqlClient->prepare($updateQuery);
+    $updateStatement->execute([
+        'title' => $_POST['title_f'],
+        'year' => $_POST['year_f'],
+        'picture' => $picture,
+        'label' => $_POST['label_f'],
+        'genre' => $_POST['genre_f'],
+        'price' => $_POST['price_f'],
+        'artist_id' => $artist_id,
+        'id' => $ids
+    ]);
+}
 
-// DELETE from employe ORDER BY noemp DESC LIMIT 1
+function upload_image($file) {
+   
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        return null; 
+    }
+
+    $check = getimagesize($file["tmp_name"]);
+    if ($check === false) {
+        return null; 
+    }
+
+    $targetDir = __DIR__ . '/../img/pictures/'; 
+    $targetFile = $targetDir . basename($file["name"]);
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    if (file_exists($targetFile)) {
+        return null; 
+    }
+
+    if ($file["size"] > 5000000) {
+        return null; 
+    }
+
+    if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+        return null;
+    }
+
+    if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+        return basename($file["name"]); 
+    } else {
+        return null; 
+    }
+}
+
+function add_disc($picture) { 
+    global $mysqlClient;
+
+    $sqlQuery = 'INSERT INTO disc(disc_title, disc_year, disc_picture, disc_label, disc_genre, disc_price, artist_id) 
+                 VALUES (:title, :year, :picture, :label, :genre, :price, :artist_id)';
+    $insertQuery = $mysqlClient->prepare($sqlQuery);
+    $insertQuery->execute([
+        'title' => $_POST['title_f'],
+        'year' => $_POST['year_f'],
+        'picture' => $picture,
+        'label' => $_POST['label_f'],
+        'genre' => $_POST['genre_f'],
+        'price' => $_POST['price_f'],
+        'artist_id' => $_POST['artist_f']
+        
+    ]);
+
+}

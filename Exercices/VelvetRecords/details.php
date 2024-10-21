@@ -19,7 +19,8 @@ $artist_list = select_artist();
 ?>
 <div class="container mt-5">
     <section>
-        <form action="assets/php/update_script.php" method="POST">
+        <form action="assets/php/update_script.php" method="POST" enctype="multipart/form-data">
+            <input type="text" value="<?php echo $ids ?>" name="id" class="d-none">
             <div class="mb-3">
                 <label for="title_details_f" class="form-label">Title</label>
                 <input type="text" name="title_f" class="form-control" id="title_details_f"
@@ -67,7 +68,7 @@ $artist_list = select_artist();
             </div>
             <label for="picture_details_f" class="form-label">Picture</label> <br>
             <div class="input-group mb-3" id="upload_img" style="display: none;">
-                <input type="file" name="picture_f" class="form-control" id="inputGroupFile02">
+                <input type="file" name="picture_f" class="form-control" id="inputGroupFile02" accept="image/*">
 
             </div>
             <img id="img_show" class="details_img"

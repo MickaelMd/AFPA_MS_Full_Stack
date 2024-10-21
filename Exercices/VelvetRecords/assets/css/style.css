@@ -23,3 +23,7 @@ nav {
   height: auto;
   border-radius: 4px;
 }
+
+.card_index {
+  width: 500px;
+}

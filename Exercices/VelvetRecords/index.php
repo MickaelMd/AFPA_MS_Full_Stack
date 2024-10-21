@@ -16,7 +16,7 @@
     <div class="card card_index" style="max-width: 500px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="assets/img/pictures/' . htmlspecialchars($e['disc_picture']) .'" class="img-fluid w-100"
+                <img src="assets/img/pictures/' . htmlspecialchars($e['disc_picture']) .'" class="img-fluid img_index w-100"
                     alt="...">
             </div>
             <div class="col-md-8">

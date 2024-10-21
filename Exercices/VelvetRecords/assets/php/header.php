@@ -11,6 +11,8 @@ if (basename($_SERVER['SCRIPT_NAME']) == 'index.php') {
  if (basename($_SERVER['SCRIPT_NAME']) == 'add_form.php') {
     $title_site = 'Velvet Records : Ajouter'; 
     $active_link_add = 'active';
+    $add_script = '<script src="assets/js/script_add.js" defer></script>';
+
  } 
  ?>
 
@@ -35,7 +37,6 @@ if (basename($_SERVER['SCRIPT_NAME']) == 'index.php') {
     }  ?>
     <title><?php echo $title_site ?></title>
 </head>
-
 
 <nav class="navbar navbar-expand-lg navbar-dark  fixed-top font_title" aria-label="Twelfth navbar example">
     <div class="container-fluid">
@@ -66,8 +67,6 @@ if (basename($_SERVER['SCRIPT_NAME']) == 'index.php') {
                         echo $active_link_add;
                     }  ?>" href="add_form.php">Ajouter</a>
                 </li>
-
-
             </ul>
         </div>
     </div>
