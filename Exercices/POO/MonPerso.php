@@ -28,10 +28,13 @@
 
 require_once __DIR__.'/classes/personnage.class.php';
 
+// $p = new Personnage();
+// $p->setNom("Lebowski");
+// $p->setPrenom("Jeff");
+// $p->SetAge(100);
+// $p->SetSexe("H");
+
 $p = new Personnage();
-$p->setNom("Lebowski");
-$p->setPrenom("Jeff");
-$p->SetAge(100);
-$p->SetSexe("H");
+$p->setPerso("Lebowski", "Jeff", 100, "H");
 
 echo $p;

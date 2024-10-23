@@ -70,14 +70,22 @@ class Magasin {
     private $_ville;
     private $_restaurant;
 
-    public function setRestaurant($restaurant) {
+    public function setMagasin($nom, $adresse, $codepostal, $ville, $restaurant) {
+
+        $this->_nom = $nom;
+        $this->_adresse = $adresse;
+        $this->_cpostal = $codepostal;
+        $this->_ville = $ville;
         $this->_restaurant = $restaurant;
+
     }
-    
+   
+    public function restaurant() {
+        return $this->_restaurant ? "Ticket restaurant : Non" : "Ticket restaurant : Oui";
 
-
+    }
+  
 };
-
 
 class Employe extends Magasin{
 
@@ -87,13 +95,33 @@ class Employe extends Magasin{
    private $_fonction;
    private $_salaire;
    private $_service;
+   private $_enfant;
 
-   public function setTimeEmb($dateEmb) {
+   public function setEmploye($nom, $prenom, $dateEmb, $salaire, $fonction, $service, $enfant) {
+    
+    $this->_nom = $nom;
+    $this->_prenom = $prenom;
     $this->_dateEmb = $dateEmb;
-   }
-   public function setSalaire($salaire)  {
     $this->_salaire = $salaire;
+    $this->_fonction = $fonction;
+    $this->_service = $service;
+    $this->_enfant = $enfant;
+
    }
+
+   public function InfoEmploye() {
+    $nom = $this->_nom;
+    $prenom = $this->_prenom;
+    $dateEmb = $this->_dateEmb;
+    $salaire = $this->_salaire;
+    $fonction = $this->_fonction;
+    $service = $this->_service;
+
+
+    return "Nom : " . $nom . "</br> Prénom : " . $prenom . "</br> Date d'embauche : " . $dateEmb .
+    "</br> Salaire : " . $salaire . "k </br> Fonction : " . $fonction . "</br> Service : " . $service;
+   }
+
 
    public function DateEmb() {
     
@@ -120,19 +148,83 @@ class Employe extends Magasin{
     else {
         return 'Prime : ' . $prime . 'k' ;
     }
+
 }
 
+public function chequeVac() {
+    $dateEmb = DateTime::createFromFormat('d-m-Y', $this->_dateEmb);
+    $currentDate = new DateTime();
+
+    $diff = $currentDate->diff($dateEmb); 
+    $diffY = $diff->y;
+
+    return ($diffY >= 1) ? "Chèques-vacances : autorisé" : "Chèques-vacances : refusé";
+
+}
+
+public function chequeNoel() {
+
+    $montant = 0;
+
+$enfant = $this->_enfant;
+
+if (count(array_filter($enfant, 'is_int')) !== count($enfant)) {
+    return 'Le tableau des enfants doit contenir uniquement des entiers';
+} 
+
+if (count($enfant) == 0) {
+    return 'Pas de chéque noel';
+} else {
+    foreach ($enfant as $a) {
+        if ($a >= 0 && $a <= 10) {
+            $montant = $montant + 20;
+            $enf10 = isset($enf10) + 1;
+        }
+        if ($a >= 11 && $a <= 15) {
+            $montant = $montant + 30;
+            $enf15 = isset($enf15) + 1;
+        }
+        if ($a >= 16 && $a <= 18) {
+            $montant = $montant + 50;
+            $enf16 = isset($enf16) + 1;
+        }
+}
+ }
+ 
+ if ($montant <= 0) {
+return 'Pas d\'enfant en age d\'avoir un chéque noel !';
+ }
+
+$phrase = "";
+ if (isset($enf10) >= 1) {
+    $e10 = $enf10 * 20;
+    $phrase = $phrase . "Pour vos " . $enf10 . " enfants de 0 à 10 ans : " . $e10 .  "€" . "</br>";
+ }
+ if (isset($enf15) >= 1) {
+    $e15 = $enf15 * 30;
+    $phrase = $phrase . "Pour vos " . $enf15 . " enfants de 11 à 15 ans : " . $e15 .  "€" . "</br>";
+}
+if (isset($enf16) >=1) {
+    $e16 = $enf16 * 50;
+    $phrase = $phrase . "Pour vos ". $enf16 ." enfants de 16 à 18 ans : " . $e16 .  "€" . "</br>";
+}
+
+return 'Le montant total des chéques noel est de ' . $montant . '€ </br>' . $phrase ;
+    
+}
 
 };
 
-
-
+// ------------------------------------------
 
 $employe = new Employe();
-$employe->setSalaire(32);
-$employe->setTimeEmb("10-12-2021");
-$employe->setRestaurant(false);
 
+$employe->setEmploye("Smith", "Jhon", "10-12-2021", 32, "Fonction", "Service", [11,15,10,16,14,0]);
+$employe->setMagasin("Nom", "Adresse", "Codepostal", "Ville", true);
 
+echo $employe->InfoEmploye() . "<hr>";
 echo $employe->DateEmb();
-echo $employe->calculerPrime();
+echo $employe->calculerPrime() . '</br>';
+echo $employe->Restaurant() . "</br>"; 
+echo $employe->chequeVac() . "<hr>";
+echo $employe->chequeNoel();

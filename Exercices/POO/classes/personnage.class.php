@@ -23,7 +23,6 @@
 
 //     echo ($p);
 
-
 // --------------------------------------------------------
 
 class Personnage {
@@ -32,29 +31,29 @@ class Personnage {
     private $_age;
     private $_sexe;
 
-    // public function __construct() {
-    //     $this->_nom = "test";
-    //     $this->_prenom = "test";
-    //     $this->_age = 0;
-    //     $this->_sexe = "test";
+    public function setPerso($nom, $prenom, $age, $sexe) {
+        $this->_nom = $nom;
+        $this->_prenom = $prenom;
+        $this->_age = (int)$age;
+        $this->_sexe = $sexe;
+    }
+
+    // public function setNom($nom) {
+    //     $this->_nom = $nom;
     // }
 
-    public function setNom($nom) {
-        $this->_nom = $nom;
-    }
+    // public function setPrenom($prenom) {
+    //     $this->_prenom = $prenom;
+    // }
 
-    public function setPrenom($prenom) {
-        $this->_prenom = $prenom;
-    }
+    // public function SetAge($age) {
+    //     $this->_age = (int)$age;
+    // }
 
-    public function SetAge($age) {
-        $this->_age = (int)$age;
-    }
-
-    public function SetSexe($sexe) {
-        $this->_sexe = $sexe;
+    // public function SetSexe($sexe) {
+    //     $this->_sexe = $sexe;
         
-    }
+    // }
 
     public function __toString() {
         return $this->_nom . " " . $this->_prenom . " " . $this->_age . "  " . $this->_sexe;
