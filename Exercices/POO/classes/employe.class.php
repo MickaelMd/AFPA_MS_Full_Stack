@@ -70,7 +70,8 @@ class Magasin {
     private $_ville;
     private $_restaurant;
 
-    public function setMagasin($nom, $adresse, $codepostal, $ville, $restaurant) {
+
+    public function __construct($nom, $adresse, $codepostal, $ville, $restaurant) {
 
         $this->_nom = $nom;
         $this->_adresse = $adresse;
@@ -79,10 +80,9 @@ class Magasin {
         $this->_restaurant = $restaurant;
 
     }
-   
-    public function restaurant() {
-        return $this->_restaurant ? "Ticket restaurant : Non" : "Ticket restaurant : Oui";
 
+    public function restaurant() {
+        return $this->_restaurant;
     }
   
 };
@@ -96,8 +96,18 @@ class Employe extends Magasin{
    private $_salaire;
    private $_service;
    private $_enfant;
+   private $_magasin;
 
-   public function setEmploye($nom, $prenom, $dateEmb, $salaire, $fonction, $service, $enfant) {
+   public function setMagasin(Magasin $magasin) {
+    $this->_magasin = $magasin;
+}
+
+public function restaurant() {
+    return $this->_magasin->restaurant() ? "Ticket restaurant : Oui" : "Ticket restaurant : Non";
+}
+
+
+   public function __construct($nom, $prenom, $dateEmb, $salaire, $fonction, $service, $enfant) {
     
     $this->_nom = $nom;
     $this->_prenom = $prenom;
@@ -212,19 +222,19 @@ if (isset($enf16) >=1) {
 return 'Le montant total des chéques noel est de ' . $montant . '€ </br>' . $phrase ;
     
 }
-
+const test = 1;
 };
 
 // ------------------------------------------
 
-$employe = new Employe();
+$employe = new Employe("Smith", "Jhon", "10-12-2021", 32, "Fonction", "Service", [11,15,10,16,14,0]);
+$magasin = new Magasin("Nom", "Adresse", "Codepostal", "Ville", true);
 
-$employe->setEmploye("Smith", "Jhon", "10-12-2021", 32, "Fonction", "Service", [11,15,10,16,14,0]);
-$employe->setMagasin("Nom", "Adresse", "Codepostal", "Ville", true);
+$employe->setMagasin($magasin);
 
 echo $employe->InfoEmploye() . "<hr>";
 echo $employe->DateEmb();
 echo $employe->calculerPrime() . '</br>';
-echo $employe->Restaurant() . "</br>"; 
+echo $employe->restaurant() . "</br>"; 
 echo $employe->chequeVac() . "<hr>";
 echo $employe->chequeNoel();
