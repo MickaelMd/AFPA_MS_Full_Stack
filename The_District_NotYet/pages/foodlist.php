@@ -75,11 +75,11 @@ foreach ($platL as $platLs) {
 
 $resultatL = btn_left($id);
 
-$btn_link_l = $resultatL ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatL['id']) : '#';
+$btn_link_l = $resultatL ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatL['id']) : '#';
 
 $resultatR = btn_right($id);
 
-$btn_link_r = $resultatR ? $ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatR['id']) : '#';
+$btn_link_r = $resultatR ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', $resultatR['id']) : '#';
 
 ?>
             <div id="btn_section" class="d-flex justify-content-center">
