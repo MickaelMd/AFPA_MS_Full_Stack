@@ -19,12 +19,12 @@ require_once __DIR__.'/assets/php/head.php'; ?>
                         echo '
                             <div class="cards_cat_mp">
                                 <img class="img_card_cat" src="'.$ip_link.'/assets/img/category/'.$categories['image'].'" alt="'.$categories['libelle'].'"> 
-                                <a href="'.$ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $categories['id']).'">'.$categories['libelle'].'</a>
+                                <a href="'.$ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', $categories['id']).'">'.$categories['libelle'].'</a>
                             </div>';
                     }
 ?>
             </div>
-            <a class="d-flex text-decoration-none" href="html/categorie.php">
+            <a class="d-flex text-decoration-none" href="pages/categorie.php">
                 <button type="button" class="btn btn-lg btn-info mt-3">
                     TOUTES LES CATÉGORIES
                 </button>
@@ -38,12 +38,12 @@ foreach ($platindex as $plats) {
                                 <div class="img_zoom">
                                     <img class="img_card_plat_i" src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" alt="'.$plats['libelle'].'">
                                 </div>
-                                <a href="'.$ip_link.'/html/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">'.$plats['libelle'].'</a>
+                                <a href="'.$ip_link.'/pages/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">'.$plats['libelle'].'</a>
                             </div>';
 }
 ?>
             </div>
-            <a class="d-flex text-decoration-none" href="html/plats.php">
+            <a class="d-flex text-decoration-none" href="pages/plats.php">
                 <button type="button" class="btn btn-info mt-3">
                     TOUS LES PLATS
                 </button>

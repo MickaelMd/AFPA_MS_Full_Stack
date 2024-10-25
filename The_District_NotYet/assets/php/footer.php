@@ -35,9 +35,9 @@
 
         <div id="footer_nav" class="font_text">
             <a href="<?php echo $ip_link; ?>/index.php">Accueil</a>
-            <a href="<?php echo $ip_link; ?>/html/categorie.php">Catégories</a>
-            <a href="<?php echo $ip_link; ?>/html/plats.php">Plats</a>
-            <a href="<?php echo $ip_link; ?>/html/contact.php">Contact</a>
+            <a href="<?php echo $ip_link; ?>/pages/categorie.php">Catégories</a>
+            <a href="<?php echo $ip_link; ?>/pages/plats.php">Plats</a>
+            <a href="<?php echo $ip_link; ?>/pages/contact.php">Contact</a>
 
         </div>
     </div>

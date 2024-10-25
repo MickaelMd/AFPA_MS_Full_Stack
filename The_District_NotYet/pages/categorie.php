@@ -12,7 +12,7 @@ foreach ($categorie as $categories) {
                             
                             <div class="cards_cat_mp" id="img_card1">
                         <img class="img_card_cat" src="'.$ip_link.'/assets/img/category/'.$categories['image'].'" alt="'.$categories['libelle'].'">
-                        <a href="'.$ip_link.'/html/foodlist.php?categorie='.preg_replace('#\s+#', '', $categories['id']).'">'.$categories['libelle'].'</a>
+                        <a href="'.$ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', $categories['id']).'">'.$categories['libelle'].'</a>
                     </div>';
 }
 ?>

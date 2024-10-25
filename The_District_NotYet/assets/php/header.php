@@ -15,13 +15,13 @@
                 </li>
                 <li class="nav-item nav_cent_res">
                     <a class="nav-link" aria-current="page"
-                        href="<?php echo $ip_link; ?>/html/categorie.php">Catégories</a>
+                        href="<?php echo $ip_link; ?>/pages/categorie.php">Catégories</a>
                 </li>
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="<?php echo $ip_link; ?>/html/plats.php">Plats</a>
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/pages/plats.php">Plats</a>
                 </li>
                 <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="<?php echo $ip_link; ?>/html/contact.php">Contact</a>
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/pages/contact.php">Contact</a>
                 </li>
 
                 <?php
@@ -29,19 +29,19 @@
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
                 echo ' 
                  <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="'.$ip_link.'/html/profil.php">Profil</a>
+                    <a class="nav-link" href="'.$ip_link.'/pages/profil.php">Profil</a>
                 </li>
                 ';
             } else {
                 echo ' 
                     <li class="nav-item nav_cent_res">
-                       <a class="nav-link" href="'.$ip_link.'/html/log_sign.php">Profil</a>
+                       <a class="nav-link" href="'.$ip_link.'/pages/log_sign.php">Profil</a>
                    </li>
                    ';
             } if (isset($_SESSION['email']) && !is_null($_SESSION['email']) && $_SESSION['admin'] > 0) {
                 echo ' 
                  <li class="nav-item nav_cent_res">
-                    <a class="nav-link" href="'.$ip_link.'/html/admin.php">Administration</a>
+                    <a class="nav-link" href="'.$ip_link.'/pages/admin.php">Administration</a>
                 </li>
                 ';
             } ?>
@@ -55,7 +55,7 @@
                 echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/assets/php/logout.php">Déconnexion</a>
             </span>';
             } else {
-                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/html/log_sign.php">Connexion
+                echo ' <a class="nav-link log_sign_nav text-center" href=" '.$ip_link.'/pages/log_sign.php">Connexion
                 /
                 Inscription</a>
             </span>';
@@ -98,7 +98,7 @@
             }
 
             echo '
-                <a class="link_card_sh" href="'.$ip_link.'/html/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">
+                <a class="link_card_sh" href="'.$ip_link.'/pages/platunique.php?plat='.preg_replace('#\s+#', '', $plats['id']).'">
                  <div class="plat_affiche">
                     
             <img src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" alt="">
