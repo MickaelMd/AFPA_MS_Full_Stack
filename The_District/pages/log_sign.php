@@ -24,6 +24,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
             </div>
 
             <form action="" method="POST">
+                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
 
                 <div class="row">
                     <div class="mb-3">
@@ -51,6 +52,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
             <h3 class="text-center">Inscription</h3>
 
             <form id="sign_up_form" action="" method="POST" class="mt-5">
+                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="sign_nom" class="form-label text-center">Nom</label>

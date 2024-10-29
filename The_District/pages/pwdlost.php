@@ -4,9 +4,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
 <body>
     <div class="container">
 
-        <?php require_once __DIR__.'/../assets/php/header.php'; ?>
-
-        <?php
+        <?php require_once __DIR__.'/../assets/php/header.php'; 
 
             if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
                 echo '<h3 class="text-center mt-5 text-success">Vous êtes connecté ! </h3>';
@@ -33,8 +31,6 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
  ';
             }
 
-?>
-        <?php
     if (isset($_POST['reset_submit'])) {
         $lostemail = $_POST['reset_email'];
 

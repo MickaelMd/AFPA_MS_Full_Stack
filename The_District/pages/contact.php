@@ -1,5 +1,7 @@
 <?php require_once __DIR__.'/../assets/php/connect.php';
-require_once __DIR__.'/../assets/php/head.php'; ?>
+require_once __DIR__.'/../assets/php/head.php'; 
+
+?>
 
 <body>
     <div class="container">
@@ -20,6 +22,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
             <h2 class="text-center">Contact</h2>
             <div id="form_contact" class="container"></div>
             <form id="contactForm" action="../assets/php/contact_form/contact_script.php" method="POST">
+                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
                 <div class="row mb-3 mt-3">
                     <div class="col-md-6">
                         <label class="form-label" for="nom">Nom</label>

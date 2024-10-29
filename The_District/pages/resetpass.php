@@ -1,8 +1,6 @@
 <?php require_once __DIR__.'/../assets/php/connect.php';
 require_once __DIR__.'/../assets/php/head.php'; ?>
 
-
-
 <body>
     <div class="container">
 

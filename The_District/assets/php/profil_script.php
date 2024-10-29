@@ -1,5 +1,10 @@
 <?php
         if (isset($_POST['profil_submit'])) {
+
+
+            if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+
+
             if (!empty($_POST['profil_old_pwd'])) {
                 $login_login = $_POST['profil_email'];
                 $req = $mysqlClient->prepare('SELECT pass, nom_client, nom, prenom, email, telephone, adresse FROM clients WHERE email = :email');
@@ -120,5 +125,9 @@
 
                 echo 'Profil mis à jour avec succès.</br></br>';
             }
+        }
+        else {
+            die('Token CSRF invalide');
+        }
         }
 ?>

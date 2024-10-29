@@ -66,14 +66,14 @@ body {
   height: 34px;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
+  padding: 0px;
   text-align: center;
   width: 34px;
 }
 
 .board-row:after {
   clear: both;
-  content: '';
+  content: "";
   display: table;
 }
 
@@ -87,4 +87,8 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.tabSection {
+  justify-self: center;
 }

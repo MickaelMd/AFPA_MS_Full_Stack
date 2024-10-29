@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__.'/../connect.php';
-
 date_default_timezone_set('Europe/Paris');
 
+if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+   
 $name = $_SESSION['nom'] ?? $_POST['nom'];
 $prenom = $_SESSION['prenom'] ?? $_POST['prenom'];
 $email = $_SESSION['email'] ?? $_POST['email'];
@@ -38,3 +39,9 @@ $str = ' Nom : '.$name.'
 file_put_contents(date('Y-m-d-H-i-s').'.txt', $str, FILE_APPEND);
 
 header('Location: '.$_SERVER['HTTP_REFERER']);
+
+
+
+} else {
+    die('Token CSRF invalide');
+}

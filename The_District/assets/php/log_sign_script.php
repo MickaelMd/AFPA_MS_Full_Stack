@@ -3,6 +3,9 @@
     // ------------- Connection ---------------
 
     if (isset($_POST['login_submit'])) {
+
+        if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+
         $login_login = $_POST['login_email'];
         $mdp_login = $_POST['login_pwd'];
     
@@ -40,11 +43,16 @@
             echo "<meta http-equiv='refresh' content='0'>";
         }
     }
+    else {
+        die('Token CSRF invalide');
+    }
+    }
     
 
 // --------  Créer un user et se connecter avec    -----
 
 if (isset($_POST['sign_submit'])) {
+    if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
     if (!preg_match(pattern: "/^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/", subject: $_POST['sign_nom'])) {
         echo 'Le nom est obligatoire et doit comporter uniquement des lettres.</br></br>';
 
@@ -114,6 +122,7 @@ if (isset($_POST['sign_submit'])) {
 
         sign_insert($nom_client, $sign_nom, $sign_prenom, $sign_email, $sign_telephone, $sign_adresse, $mdp_hash);
 
+        $resultat = connect_result($sign_email);
         $_SESSION['email'] = $sign_email;
         $_SESSION['nom'] = $resultat['nom'];
         $_SESSION['prenom'] = $resultat['prenom'];
@@ -125,5 +134,10 @@ if (isset($_POST['sign_submit'])) {
         $_SESSION['shopping_list_count'];
 
         echo "<meta http-equiv='refresh' content='0'>";
+    }
+    
+    }
+    else {
+        die('Token CSRF invalide');
     }
 }

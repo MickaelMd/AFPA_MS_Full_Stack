@@ -2,10 +2,12 @@
 if (!isset($_SESSION['email'])) {
     header('Location: ../index.php');
 }
-require_once __DIR__.'/../assets/php/head.php'; ?>
+require_once __DIR__.'/../assets/php/head.php'; 
 
+?>
 
 <body>
+
     <div class="container">
 
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
@@ -17,6 +19,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
             <h3 class="text-center mt-5">Modification du profil</h3>
 
             <form action="" method="POST" id="form_profil">
+                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
 
                 <div class="row mb-3 mt-3">
                     <div class="col-md-6">
@@ -81,7 +84,7 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
                 <div class="mb-3">
                     <label for="profil_old_pwd" class="form-label">Ancien mot de
                         passe</label>
-                    <input type="text" class="form-control" id="profil_old_pwd" name="profil_old_pwd">
+                    <input type="password" class="form-control" id="profil_old_pwd" name="profil_old_pwd">
 
                 </div>
                 <div class="d-flex justify-content-center">
