@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import DiscList from "./components/DiscList";
+import DiscDetails from "./components/DiscDetails"; // Importe le composant DiscDetails
 import NotFound from "./components/NotFound";
 import axios from "axios";
 
@@ -26,9 +27,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<DiscList discs={discs} />} />
-        {/* Autres routes pour ton application ici si besoin */}
-
-        {/* Route pour les erreurs 404 */}
+        <Route path="/disc/:discId" element={<DiscDetails />} />{" "}
+        {/* Nouvelle route pour les détails du disque */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

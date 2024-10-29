@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function DiscList({ discs }) {
   return (
@@ -26,12 +27,12 @@ function DiscList({ discs }) {
                 <p className="text-gray-600">Year: {disc.disc_year}</p>
                 <p className="text-gray-600">Genre: {disc.disc_genre}</p>
                 <div className="mt-4 flex justify-center">
-                  <a
-                    href={`/details.php?disc_id=${disc.disc_id}`}
+                  <Link
+                    to={`/disc/${disc.disc_id}`} // Utilisation de Link pour une redirection React
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                   >
                     Détails
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

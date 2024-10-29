@@ -14,15 +14,12 @@ function Navbar() {
         <div className="hidden md:flex md:flex-grow justify-center" id="navbar">
           <ul className="flex space-x-4">
             <li>
-              <a href="/index.php" className="text-white hover:text-gray-300">
+              <a href="/" className="text-white hover:text-gray-300">
                 Accueil
               </a>
             </li>
             <li>
-              <a
-                href="/details.php?disc_id=1"
-                className="text-white hover:text-gray-300"
-              >
+              <a href="/disc/1" className="text-white hover:text-gray-300">
                 Details
               </a>
             </li>
