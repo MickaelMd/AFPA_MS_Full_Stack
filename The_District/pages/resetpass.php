@@ -18,6 +18,7 @@ require_once __DIR__.'/../assets/php/head.php';
         <section id="login_section_page" class="mt-5">
             <h3 class="text-center">Mot de passe perdu</h3>
             <form action="" method="POST">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                 <div class="row">
                     <div class="mb-3 mt-5 text-center">
                         <label for="reset_email" class="form-label text-center">Adresse email</label>
@@ -35,6 +36,9 @@ require_once __DIR__.'/../assets/php/head.php';
 
         <?php
         if (isset($_POST['reset_submit'])) {
+            if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+
+
             $lostemail = htmlspecialchars($_POST['reset_email']);
             $resultat = rp_find($lostemail);
 
@@ -47,6 +51,7 @@ require_once __DIR__.'/../assets/php/head.php';
             ?>
         <section id="login__reset_section_page" class="mt-5">
             <form action="" method="POST" id="reset_form">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                 <div class="row">
                     <div class="mb-3 mt-5 text-center">
                         <label for="reset_code" class="form-label text-center">Code de vérification</label>
@@ -72,9 +77,16 @@ require_once __DIR__.'/../assets/php/head.php';
             </form>
         </section>
         <?php endif; 
+            } else {
+            
+                die('Token CSRF invalide');
+            
+            }
+            
         }
 
         if (isset($_POST['reset_code_submit'])) {
+            if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
             $reset_code = ($_POST['reset_code']);
             $reset_pass = ($_POST['reset_pass']);
             $reset_pass_confirm = ($_POST['reset_pass_confirm']);
@@ -100,6 +112,11 @@ require_once __DIR__.'/../assets/php/head.php';
         <h3 class="text-center text-danger">Le code de vérification est incorrect.</h3>
         <?php endif;
             endif;
+        } else {
+            
+            die('Token CSRF invalide');
+        
+        }
         }
         ?>
     </div>

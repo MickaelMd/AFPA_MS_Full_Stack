@@ -27,6 +27,8 @@ require_once __DIR__.'/../assets/php/head.php';
                 ?>
 
                 <form action="" method="POST">
+                    <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+
                     <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
                         <div class="row g-0">
                             <div class="col-md-4">

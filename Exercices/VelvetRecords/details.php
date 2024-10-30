@@ -9,7 +9,7 @@ if (!is_numeric($ids) || (int) $ids <= 0) {
     exit;
 }
 
-$prt = details_disc($ids);
+$prt = details_disc((int)$ids);
 
 if (!$prt) {
     echo '<h1 class="mt-5 text-center">Le disc n\'existe pas.</h1>';
@@ -20,16 +20,15 @@ $artist_list = select_artist();
 <div class="container mt-5">
     <section>
         <form action="assets/php/update_script.php" method="POST" enctype="multipart/form-data">
-            <input type="text" value="<?php echo $ids ?>" name="id" class="d-none">
+            <input type="text" value="<?= $ids ?>" name="id" class="d-none">
             <div class="mb-3">
                 <label for="title_details_f" class="form-label">Title</label>
                 <input type="text" name="title_f" class="form-control" id="title_details_f"
-                    value="<?php echo htmlspecialchars($prt['disc_title']) ?>" disabled>
+                    value="<?= htmlspecialchars($prt['disc_title']) ?>" disabled>
             </div>
             <div class="mb-2" id="artist_details_f">
                 <label for="artist_details_f" class="form-label">Artist</label>
-                <input type="text" class="form-control" value="<?php echo htmlspecialchars($prt['artist_name']) ?>"
-                    disabled>
+                <input type="text" class="form-control" value="<?= htmlspecialchars($prt['artist_name']) ?>" disabled>
             </div>
             <div id="select_artist" class="mb-2" style="display:none;">
                 <label for="artist_details_f" class="form-label">Artist</label>
@@ -48,23 +47,23 @@ $artist_list = select_artist();
             <div class="mb-3">
                 <label for="year_details_f" class="form-label">Year</label>
                 <input type="text" name="year_f" class="form-control" id="year_details_f"
-                    value="<?php echo htmlspecialchars($prt['disc_year']) ?>" disabled>
+                    value="<?= htmlspecialchars($prt['disc_year']) ?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="genre_details_f" class="form-label">Genre</label>
                 <input type="text" name="genre_f" class="form-control" id="genre_details_f"
-                    value="<?php echo htmlspecialchars($prt['disc_genre']) ?>" disabled>
+                    value="<?= htmlspecialchars($prt['disc_genre']) ?>" disabled>
             </div>
 
             <div class="mb-3">
                 <label for="label_details_f" class="form-label">Label</label>
                 <input type="text" name="label_f" class="form-control" id="label_details_f"
-                    value="<?php echo htmlspecialchars($prt['disc_label']) ?>" disabled>
+                    value="<?= htmlspecialchars($prt['disc_label']) ?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="price_details_f" class="form-label">Price</label>
                 <input type="text" name="price_f" class="form-control" id="price_details_f"
-                    value="<?php echo htmlspecialchars($prt['disc_price']) ?>" disabled>
+                    value="<?= htmlspecialchars($prt['disc_price']) ?>" disabled>
             </div>
             <label for="picture_details_f" class="form-label">Picture</label> <br>
             <div class="input-group mb-3" id="upload_img" style="display: none;">
@@ -72,7 +71,7 @@ $artist_list = select_artist();
 
             </div>
             <img id="img_show" class="details_img"
-                src="assets/img/pictures/<?php echo htmlspecialchars($prt['disc_picture']) ?>" alt="">
+                src="assets/img/pictures/<?= htmlspecialchars($prt['disc_picture']) ?>" alt="">
             <br>
             <div class="d-flex">
                 <a href="#btn_edit" id="btn_edit" class="btn btn-primary m-2">Modifier</a>
@@ -82,8 +81,8 @@ $artist_list = select_artist();
 
                 <a href="#delete_submit" id="delete_btn" class="btn btn-primary m-2" id="submit_btn"
                     type="submit">Supprimer</a>
-                <a href="assets/php/delete_script.php?id=<?php echo $ids; ?>" class="btn btn-danger m-2"
-                    id="delete_submit" type="submit" style="display: none;">SUPPRIMER
+                <a href="assets/php/delete_script.php?id=<?= $ids; ?>" class="btn btn-danger m-2" id="delete_submit"
+                    type="submit" style="display: none;">SUPPRIMER
                 </a>
 
                 <a href="" class="btn btn-primary m-2">Retour</a>

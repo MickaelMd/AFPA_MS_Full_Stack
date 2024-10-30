@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';"> -->
 
     <link rel="shortcut icon" href="<?php echo $ip_link; ?>/assets/img/the_district_brand/favicon.png"
         type="image/x-icon" />

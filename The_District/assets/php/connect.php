@@ -1,5 +1,12 @@
 <?php
-
+// session_set_cookie_params([
+//     'lifetime' => 0, 
+//     'path' => '/',
+//     'domain' => $_SERVER['HTTP_HOST'], 
+//     'secure' => true, 
+//     'httponly' => true,
+//     'samesite' => 'Strict' 
+// ]);
 session_start();
 date_default_timezone_set('Europe/Paris');
 
@@ -53,3 +60,8 @@ if (isset($_SESSION['email'])) {
 }
 
 require_once __DIR__.'/PDO.php';
+
+
+header("Content-Security-Policy: frame-ancestors 'none';");
+// $nonce = base64_encode(random_bytes(16));
+// header("Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-$nonce';");
