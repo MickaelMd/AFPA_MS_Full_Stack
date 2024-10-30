@@ -1,56 +1,56 @@
-<?php require_once __DIR__.'/../assets/php/connect.php';
-
-require_once __DIR__.'/../assets/php/head.php'; ?>
+<?php 
+require_once __DIR__.'/../assets/php/connect.php';
+require_once __DIR__.'/../assets/php/head.php'; 
+?>
 
 <body>
     <div class="container">
-
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
         <section id="sec_cards_plat_cat">
-            <h1 id="title_section_cat_plat" class="text-center">Tout les plats</h1>
+            <h1 id="title_section_cat_plat" class="text-center">Tous les plats</h1>
             <div id="cards_section_p_c">
 
                 <?php
-$platL = plat_index_list(90000);
-foreach ($platL as $plats) {
-    $description = $plats['description'];
-    if (strlen($description) > 100) {
-        $description = substr($description, 0, 200).'...';
-    }
+                $platL = plat_index_list(90000);
 
-    echo '              
-                        <form action="" method="POST">
+                foreach ($platL as $plats):
+                    $libelle = htmlspecialchars($plats['libelle'], ENT_QUOTES, 'UTF-8');
+                    $image = htmlspecialchars($plats['image'], ENT_QUOTES, 'UTF-8');
+                    $prix = htmlspecialchars($plats['prix'], ENT_QUOTES, 'UTF-8');
+                    $description = htmlspecialchars($plats['description'], ENT_QUOTES, 'UTF-8');
+
+                   
+                    if (strlen($description) > 200) {
+                        $description = substr($description, 0, 200).'...';
+                    }
+                ?>
+
+                <form action="" method="POST">
                     <div class="card mb-3" id="cards_plat_all" style="max-width: 540px">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="'.$ip_link.'/assets/img/food/'.$plats['image'].'" class="img-fluid rounded-start" alt="Image du plat" />
+                                <img src="<?= $ip_link ?>/assets/img/food/<?= $image ?>" class="img-fluid rounded-start"
+                                    alt="Image du plat" />
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h4 class="card-title"> '.$plats['libelle'].' </h4>
-                                    <p class="card-text font_text">
-                                        '.$description.'
-                                    </p>
-                                    <p class="font_text show_price">'.$plats['prix'].' €</p>
+                                    <h4 class="card-title"><?= $libelle ?></h4>
+                                    <p class="card-text font_text"><?= $description ?></p>
+                                    <p class="font_text show_price"><?= $prix ?> €</p>
                                     <div class="d-grid gap-2 d-md-flex">
-                                        
-                                            <button type="submit" class="btn btn-info mt-3 btn_com" name="command_btn" value="'.$plats['id'].'">
-                                                COMMANDER
-                                            </button>
-                                        
+                                        <button type="submit" class="btn btn-info mt-3 btn_com" name="command_btn"
+                                            value="<?= htmlspecialchars($plats['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                            COMMANDER
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> </form>';
-}
+                    </div>
+                </form>
 
-// if (isset($_POST['command_btn'])) {
-//     $_SESSION['shopping_list_count'] = $_SESSION['shopping_list_count'] + 1;
-// }
-
-?>
+                <?php endforeach; ?>
 
             </div>
         </section>

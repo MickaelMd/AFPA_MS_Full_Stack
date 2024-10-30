@@ -1,11 +1,10 @@
-<?php require_once __DIR__.'/../assets/php/connect.php';
+<?php 
+require_once __DIR__.'/../assets/php/connect.php';
 require_once __DIR__.'/../assets/php/head.php'; 
-
 ?>
 
 <body>
     <div class="container">
-
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
         <section id="contact_section_page">
@@ -22,24 +21,21 @@ require_once __DIR__.'/../assets/php/head.php';
             <h2 class="text-center">Contact</h2>
             <div id="form_contact" class="container"></div>
             <form id="contactForm" action="../assets/php/contact_form/contact_script.php" method="POST">
-                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+
                 <div class="row mb-3 mt-3">
                     <div class="col-md-6">
                         <label class="form-label" for="nom">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required <?php
-
-            if (isset($_SESSION['nom']) && !is_null($_SESSION['nom'])) {
-                echo 'value="'.$_SESSION['nom'].'" readonly';
-            } ?> />
+                        <input type="text" class="form-control" id="nom" name="nom" required
+                            value="<?= isset($_SESSION['nom']) ? htmlspecialchars($_SESSION['nom']) : '' ?>"
+                            <?= isset($_SESSION['nom']) ? 'readonly' : '' ?> />
                         <span id="error-nom" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="prenom">Prenom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" required <?php
-
-            if (isset($_SESSION['prenom']) && !is_null($_SESSION['prenom'])) {
-                echo 'value="'.$_SESSION['prenom'].'" readonly';
-            } ?> />
+                        <input type="text" class="form-control" id="prenom" name="prenom" required
+                            value="<?= isset($_SESSION['prenom']) ? htmlspecialchars($_SESSION['prenom']) : '' ?>"
+                            <?= isset($_SESSION['prenom']) ? 'readonly' : '' ?> />
                         <span id="error-prenom" class="text-danger"></span>
                     </div>
                 </div>
@@ -47,20 +43,16 @@ require_once __DIR__.'/../assets/php/head.php';
                 <div class="row mb-3 mt-3">
                     <div class="col-md-6">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required <?php
-
-            if (isset($_SESSION['email']) && !is_null($_SESSION['email'])) {
-                echo 'value="'.$_SESSION['email'].'" readonly';
-            } ?> />
+                        <input type="email" class="form-control" id="email" name="email" required
+                            value="<?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : '' ?>"
+                            <?= isset($_SESSION['email']) ? 'readonly' : '' ?> />
                         <span id="error-email" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="telephone">Téléphone</label>
-                        <input type="text" class="form-control" id="telephone" name="telephone" required <?php
-
-            if (isset($_SESSION['telephone']) && !is_null($_SESSION['telephone'])) {
-                echo 'value="'.$_SESSION['telephone'].'" readonly';
-            } ?> />
+                        <input type="text" class="form-control" id="telephone" name="telephone" required
+                            value="<?= isset($_SESSION['telephone']) ? htmlspecialchars($_SESSION['telephone']) : '' ?>"
+                            <?= isset($_SESSION['telephone']) ? 'readonly' : '' ?> />
                         <span id="error-telephone" class="text-danger"></span>
                     </div>
                 </div>
@@ -70,12 +62,12 @@ require_once __DIR__.'/../assets/php/head.php';
                     <textarea class="form-control" id="demande" cols="30" rows="10" name="demande" required></textarea>
                     <span id="error-demande" class="text-danger"></span>
                 </div>
+
                 <div class="d-flex justify-content-center m-5">
                     <input class="btn btn-lg btn-info m-2" type="submit" value="Envoyer" />
                 </div>
             </form>
         </section>
-
     </div>
 
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
