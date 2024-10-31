@@ -97,12 +97,24 @@ require_once __DIR__.'/../assets/php/head.php'; ?>
                         <input type="password" class="form-control" id="sign_pwd_confirm" name="sign_pwd_confirm">
                         <span id="error-sign_pwd_confirm" class="text-danger"></span>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary w-50 mt-3" name="sign_submit">Inscription</button>
+
+                    <div>
+
+                        <input type="checkbox" class="form-check-input" id="check_rgpd" name="check_rgpd">
+                        <label for="check_rgpd"> Accepter la <a href="<?= $ip_link ?>/pages/rgpd.php">Politique de
+                                confidentialité</a></label>
+                        </br>
+                        <span id="error-check_rgpd" class="text-danger"></span>
                     </div>
+
                 </div>
-            </form>
-        </section>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-50 mt-3" name="sign_submit">Inscription</button>
+                </div>
+    </div>
+    </form>
+    </section>
 
     </div>
 

@@ -8,13 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
     "sign_adresse",
     "sign_pwd",
     "sign_pwd_confirm",
+    "check_rgpd",
   ];
 
   function validateField(fieldId, errorId, validationFn, values, errorMessage) {
     const field = document.getElementById(fieldId);
     const errorField = document.getElementById(errorId);
 
-    if (validationFn(field.value.trim(), values)) {
+    const fieldValue =
+      field.type === "checkbox" ? field.checked : field.value.trim();
+
+    if (validationFn(fieldValue, values)) {
       errorField.textContent = "";
       return true;
     } else {
@@ -61,6 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
       validate: (value, values) => value === values.sign_pwd,
       errorMessage: "Les mots de passe doivent être identiques.",
     },
+    check_rgpd: {
+      validate: (isChecked) => isChecked,
+      errorMessage: "Vous devez accepter la politique de confidentialité.",
+    },
   };
 
   form.addEventListener("submit", function (event) {
@@ -68,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const values = {};
 
     fields.forEach((fieldId) => {
-      values[fieldId] = document.getElementById(fieldId).value.trim();
+      const field = document.getElementById(fieldId);
+      values[fieldId] =
+        field.type === "checkbox" ? field.checked : field.value.trim();
     });
 
     fields.forEach((fieldId) => {
@@ -94,7 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
     field.addEventListener("blur", () => {
       const values = {};
       fields.forEach((id) => {
-        values[id] = document.getElementById(id).value.trim();
+        const field = document.getElementById(id);
+        values[id] =
+          field.type === "checkbox" ? field.checked : field.value.trim();
       });
       validateField(
         fieldId,
@@ -106,12 +118,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  if (localStorage.getItem("loginFail") === "true") {
-    document.getElementById("error_login_fail").style.display = "block";
-    localStorage.removeItem("loginFail");
-  }
-});
-
-// --------

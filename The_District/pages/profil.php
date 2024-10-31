@@ -3,7 +3,6 @@ if (!isset($_SESSION['email'])) {
     header('Location: ../index.php');
 }
 require_once __DIR__.'/../assets/php/head.php'; 
-
 ?>
 
 <body>
@@ -89,13 +88,41 @@ require_once __DIR__.'/../assets/php/head.php';
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary w-50 mt-3" name="profil_submit">Modification</button>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger text-center mt-3" id="btn_delete_profil">Supprimer
+                        votre
+                        compte</button>
                 </div>
             </form>
             <?php require_once __DIR__.'/../assets/php/profil_script.php'; ?>
 
         </section>
 
+        <section id="delete_account_section">
+            <h2 class="text-light text-center">Voulez vous vraiment supprimer votre compte ?</h2>
+
+            <div id="btn_section_delete">
+                <form action="" method="post">
+                    <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION['csrf']); ?>">
+                    <button type="submit" class="btn btn-danger text-center" name="delete_profil">Supprimer
+                        définitivement !</button>
+
+                </form>
+
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary text-center mt-3" id="btn_delete_profil_back">Retour
+                        vers le
+                        profil</button>
+                </div>
+
+            </div>
+
+        </section>
+
         <!-- ---------------------------------------------- -->
+
     </div>
     <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
 

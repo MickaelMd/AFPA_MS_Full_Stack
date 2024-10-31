@@ -85,3 +85,45 @@ document.addEventListener("DOMContentLoaded", () => {
       .addEventListener("blur", () => validateField(fieldId));
   });
 });
+
+// ---------
+
+function bloquerScroll() {
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
+}
+
+function debloquerScroll() {
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
+}
+
+const deleteSection = document.getElementById("delete_account_section");
+
+document.getElementById("btn_delete_profil").addEventListener("click", () => {
+  bloquerScroll();
+  deleteSection.classList.add("visible");
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" || "Backspace") {
+    document.getElementById("delete_account_section").style.display = "none";
+    debloquerScroll();
+  } else {
+    typedWord += event.key;
+  }
+});
+
+document
+  .getElementById("btn_delete_profil_back")
+  .addEventListener("click", () => {
+    deleteSection.classList.remove("visible");
+    debloquerScroll();
+  });
+
+document
+  .getElementById("delete_account_section")
+  .addEventListener("click", () => {
+    deleteSection.classList.remove("visible");
+    debloquerScroll();
+  });

@@ -53,6 +53,12 @@
 
 if (isset($_POST['sign_submit'])) {
     if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+
+        if (!isset($_POST['check_rgpd'])) {
+            echo 'Vous devez accepter la politique de confidentialité.';
+            return;
+        }
+
     if (!preg_match(pattern: "/^[a-zA-ZÀ-ÿ][a-zà-ÿ' -]*$/", subject: $_POST['sign_nom'])) {
         echo 'Le nom est obligatoire et doit comporter uniquement des lettres.</br></br>';
 

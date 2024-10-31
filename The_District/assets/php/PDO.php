@@ -351,3 +351,16 @@ function insert_cat()
 
     return $insertRecipe;
 }
+
+// ------ profil.php <=
+
+function delete_profil($id_profil){
+
+    global $mysqlClient; 
+
+    $sqlQuery = "DELETE FROM clients WHERE uuid = :uuid";
+    $Statement = $mysqlClient->prepare($sqlQuery);
+    $Statement->bindParam(':uuid', $id_profil, PDO::PARAM_STR);
+    $Statement->execute();
+
+}

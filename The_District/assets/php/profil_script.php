@@ -1,4 +1,6 @@
 <?php
+
+
         if (isset($_POST['profil_submit'])) {
 
 
@@ -130,4 +132,15 @@
             die('Token CSRF invalide');
         }
         }
-?>
+
+        if (isset($_POST['delete_profil'])) {
+            if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+
+    delete_profil($_SESSION['uuid']);
+    echo "<meta http-equiv='refresh' content='0'>";
+
+            echo "test btn delete";
+            }  else {
+                die('Token CSRF invalide');
+            }
+        };
