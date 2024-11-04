@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';"> -->
-
     <link rel="shortcut icon" href="<?php echo $ip_link; ?>/assets/img/the_district_brand/favicon.png"
         type="image/x-icon" />
     <meta name="description" content="Site du restaurant The District" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://maps.googleapis.com https://unpkg.com https://stackpath.bootstrapcdn.com https://cdn.jsdelivr.net;
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://unpkg.com https://stackpath.bootstrapcdn.com https://cdn.jsdelivr.net;
+    img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://unpkg.com https://*.tile.openstreetmap.org;
+    font-src 'self' https://fonts.gstatic.com;
+    connect-src 'self' https://maps.googleapis.com https://unpkg.com;
+    child-src 'self' blob:;">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
@@ -87,6 +94,10 @@
     if (basename($_SERVER['SCRIPT_NAME']) == 'cgv.php') {
         echo '
         <title>The District : Conditions générales de vente</title>';
+    }
+    if (basename($_SERVER['SCRIPT_NAME']) == 'commande.php') {
+        echo '
+        <title>The District : Commande</title>';
     }
 
     ?>

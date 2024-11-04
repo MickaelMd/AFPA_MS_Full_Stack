@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__.'/../assets/php/connect.php';
 require_once __DIR__.'/../assets/php/head.php'; 
+require_once __DIR__.'/../assets/php/mail_reset_pass.php'; 
 ?>
 
 <body>
@@ -44,9 +45,25 @@ require_once __DIR__.'/../assets/php/head.php';
                 $resetcode = rand(10000000, 99999999);
                 setresetcode($resetcode, $lostemail); 
             ?>
-        <h3 class="text-center mt-4 text-danger">Code de réinitialisation : <?= $resetcode ?></h3>
+        <h3 class="text-center mt-4 text-danger">Code de réinitialisation : <?php 
+        
+        // $resetcode 
+        
+        
+        ?></h3>
         <br>
-        <p class="text-center">(à envoyer par mail)</p>
+        <p class="text-center">(envoyer par mail avec phpmailer et MailHog)</p>
+
+
+        <?php 
+        
+        reset_code_mail($lostemail, $resetcode);
+        
+        echo "<meta http-equiv=refresh content=1>";
+
+    
+        ?>
+
         <?php endif;
             } else {
             

@@ -11,6 +11,7 @@ unset($_SESSION['lostmail']);
 unset($_SESSION['nom_client']);
 unset($_SESSION['uuid']);
 unset($_SESSION['csrf']);
+unset($_SESSION['commande_list']);
 
 if (isset($_COOKIE['login'])) {
     setcookie('login', '', time() - 3600, '/', '', true, true);

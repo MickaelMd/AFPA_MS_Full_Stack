@@ -364,3 +364,26 @@ function delete_profil($id_profil){
     $Statement->execute();
 
 }
+
+// ------ commande.php <=
+
+function commande_list_plat(array $where)
+{
+    global $mysqlClient;
+
+    if (empty($where)) {
+        return []; 
+    }
+    $placeholders = implode(',', array_fill(0, count($where), '?'));
+    $sqlQueryy = "SELECT * FROM `plat` WHERE id IN ($placeholders) ORDER BY libelle";
+    $platStatement = $mysqlClient->prepare($sqlQueryy);
+    $platStatement->execute(array_map('intval', $where));
+    return $platStatement->fetchAll(PDO::FETCH_ASSOC); 
+}
+
+function platExists($id) {
+    global $mysqlClient; // Utilisation de la variable globale
+    $stmt = $mysqlClient->prepare("SELECT COUNT(*) FROM plat WHERE id = :id"); // Changez 'plats' et 'id' selon votre table
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetchColumn() > 0; // Retourne true si l'ID existe, sinon false
+}

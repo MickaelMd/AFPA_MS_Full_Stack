@@ -63,3 +63,32 @@ require_once __DIR__.'/../assets/php/head.php';
 </body>
 
 </html>
+
+
+<?php 
+if (isset($_POST['command_btn'])) {
+    
+    if (hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+        
+        
+        if (filter_var($_POST['command_btn'], FILTER_VALIDATE_INT) !== false) {
+            $command_id = (int) $_POST['command_btn']; 
+            
+            
+            if (platExists($command_id)) {
+               
+                array_push($_SESSION['commande_list'], $command_id);
+                echo "<meta http-equiv='refresh' content='0'>";
+            } else {
+                die('ID du plat invalide');
+            }
+        } else {
+            die('La valeur de command_btn doit être un entier valide');
+        }
+    } else {
+        die('Token CSRF invalide');
+    }
+}
+
+
+?>

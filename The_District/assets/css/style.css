@@ -33,6 +33,13 @@ body {
   font-size: 16pt;
 }
 
+#count_commande_nav {
+  border: 1px solid black;
+  padding: 0px 7px 0px 7px;
+  border-radius: 50%;
+  font-size: 14pt;
+}
+
 .nav_cent_res {
   margin: 10px auto;
 }
@@ -417,6 +424,12 @@ footer {
   text-decoration: none;
   color: white;
   margin: 0px 10px 0px 10px;
+}
+
+.footer_nav a:hover {
+  color: rgb(160, 160, 160);
+  transition: 280ms;
+  text-decoration: underline;
 }
 
 #footer_rewards {

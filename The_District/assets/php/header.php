@@ -44,7 +44,26 @@
                     <a class="nav-link" href="'.$ip_link.'/pages/admin.php">Administration</a>
                 </li>
                 ';
-            } ?>
+            } 
+
+            ?>
+
+                <li class="nav-item nav_cent_res">
+                    <a class="nav-link" href="<?php echo $ip_link; ?>/pages/commande.php">Commande
+                        <?php if (isset($_SESSION['commande_list'])) { 
+
+
+
+if (count($_SESSION['commande_list']) > 0) {
+
+echo "<span  id=\"count_commande_nav\">" . count($_SESSION['commande_list']) . "</span>"; }
+
+
+} ?>
+
+
+                    </a>
+                </li>
 
             </ul>
             <span class="navbar-text  ms-auto">

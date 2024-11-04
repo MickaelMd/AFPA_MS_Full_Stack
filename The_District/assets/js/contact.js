@@ -78,8 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // --- <---
 
 let demande = document.getElementById("demande");
+
 document.getElementById("demande").innerHTML =
   localStorage.getItem("contact_demande");
+
 demande.addEventListener("input", function () {
   localStorage.setItem("contact_demande", demande.value);
 });
