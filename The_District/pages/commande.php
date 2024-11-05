@@ -90,8 +90,8 @@ require_once __DIR__.'/../assets/php/head.php';
     foreach ($commande_list as $platLs) {
         $prix = (float) htmlspecialchars($platLs['prix'], ENT_QUOTES, 'UTF-8');
         $quantite = isset($quantites[$platLs['id']]) ? $quantites[$platLs['id']] : 0;
-        $sous_total = $prix * $quantite;
-        $total += $sous_total;
+        $total_s = $prix * $quantite;
+        $total += $total_s;
     }
     ?>
             <h1>Total de la commande : <?= number_format($total, 2) ?>€</h1>
