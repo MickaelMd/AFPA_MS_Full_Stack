@@ -1,6 +1,8 @@
 <?php require "classes.php";
 
-// ---
+// \test\Autoload::register(); 
+
+// --- 
 
 
 
@@ -8,9 +10,9 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // ---------------------------------------------------------------------------------
 
-var_dump(text::withZero(10));
+var_dump(\test\text::withZero(10));
 
-$form = new Form(array(
+$form = new \test\Form(array(
     'username' => 'User',
     'password' => 'Pass'
 ));
@@ -27,8 +29,8 @@ echo '</form> <hr>';
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // ---------------------------------------------------------------------------------
 
-$merlin = new Personnage("Merlin");
-$harry = new Personnage("Harry");
+$merlin = new \test\Personnage("Merlin");
+$harry = new \test\Personnage("Harry");
 
 
 var_dump($merlin);  
