@@ -31,6 +31,35 @@ if (isset($_FILES['picture_f']) && $_FILES['picture_f']['error'] !== UPLOAD_ERR_
 
 try {
     update_disc($ids, $artist_id[0], $picture);
+
+
+    // function update_disc($ids, $artist_id, $picture) {
+
+    //     global $mysqlClient;
+    //     $updateQuery = 'UPDATE disc 
+    //                     SET disc_title = :title, 
+    //                         disc_year = :year, 
+    //                         disc_picture = :picture, 
+    //                         disc_label = :label, 
+    //                         disc_genre = :genre, 
+    //                         disc_price = :price, 
+    //                         artist_id = :artist_id 
+    //                     WHERE disc_id = :id';
+                        
+    //     $updateStatement = $mysqlClient->prepare($updateQuery);
+    //     $updateStatement->execute([
+    //         'title' => $_POST['title_f'],
+    //         'year' => $_POST['year_f'],
+    //         'picture' => $picture,
+    //         'label' => $_POST['label_f'],
+    //         'genre' => $_POST['genre_f'],
+    //         'price' => $_POST['price_f'],
+    //         'artist_id' => $artist_id,
+    //         'id' => $ids
+    //     ]);
+    // }
+
+
 } catch (Exception $e) {
     echo 'Une erreur s\'est produite : ' . $e->getMessage();
     exit;

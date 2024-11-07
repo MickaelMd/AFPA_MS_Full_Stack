@@ -8,11 +8,12 @@ require_once __DIR__.'/../assets/php/head.php';
         <?php 
         require_once __DIR__.'/../assets/php/header.php';
         
-        // $where = [];
+        // $where = [16,16,12,13,4,5];
         // $_SESSION['commande_list'] = $where;
 
         $commande_list = commande_list_plat($_SESSION['commande_list']);
         $quantites = array_count_values($_SESSION['commande_list']);
+
         echo count($_SESSION['commande_list']);
         ?>
 
@@ -21,6 +22,8 @@ require_once __DIR__.'/../assets/php/head.php';
             <?php 
         
         print_r($_SESSION['commande_list']);
+
+
         if (count($_SESSION['commande_list']) <= 0) {
 
             echo '<h1>Votre commande est vide.</h1>';
