@@ -24,8 +24,10 @@ require_once __DIR__.'/../assets/php/head.php';
 
 <body>
     <div class="container">
+
         <?php require_once __DIR__.'/../assets/php/header.php'; ?>
 
+        <a id="content_link_foodlist"></a>
         <section id="sec_cards_plat_cat">
             <h1 id="title_section_cat_plat">Catégorie : <?= $name; ?></h1>
 
@@ -75,10 +77,10 @@ require_once __DIR__.'/../assets/php/head.php';
             </div>
             <?php
             $resultatL = btn_left($id);
-            $btn_link_l = $resultatL ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', htmlspecialchars($resultatL['id'], ENT_QUOTES, 'UTF-8')) : '#';
+            $btn_link_l = $resultatL ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', htmlspecialchars($resultatL['id'], ENT_QUOTES, 'UTF-8')) . '#content_link_foodlist' : '#';
 
             $resultatR = btn_right($id);
-            $btn_link_r = $resultatR ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', htmlspecialchars($resultatR['id'], ENT_QUOTES, 'UTF-8')) : '#';
+            $btn_link_r = $resultatR ? $ip_link.'/pages/foodlist.php?categorie='.preg_replace('#\s+#', '', htmlspecialchars($resultatR['id'], ENT_QUOTES, 'UTF-8')) . '#content_link_foodlist' : '#';
             ?>
 
             <div id="btn_section" class="d-flex justify-content-center">

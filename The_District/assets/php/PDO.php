@@ -3,7 +3,7 @@
 
 // ------ index.php, categorie.php, plats.php, header.php <=
 
-function index_categorie_list($limit)
+function index_categorie_list(int $limit)
 {
     global $mysqlClient;
     $sqlQuery = "SELECT * FROM `categorie` WHERE active = 'Yes' ORDER BY libelle LIMIT $limit";
@@ -14,7 +14,7 @@ function index_categorie_list($limit)
     return $categorie;
 }
 
-function plat_index_list($limit)
+function plat_index_list(int $limit)
 {
     global $mysqlClient;
     $sqlQueryy = "SELECT * FROM `plat` WHERE active = 'Yes' ORDER BY libelle LIMIT $limit";
@@ -27,7 +27,7 @@ function plat_index_list($limit)
 
 // ------ foodlist.php <=
 
-function foodlist($id)
+function foodlist(int $id)
 {
     global $mysqlClient;
     $req = $mysqlClient->prepare('SELECT id, libelle, active FROM categorie WHERE id = :id');
@@ -39,7 +39,7 @@ function foodlist($id)
     return $resultat;
 }
 
-function foodlistpl($id)
+function foodlistpl(int $id)
 {
     global $mysqlClient;
     $sqlQuery = "SELECT * FROM `plat` WHERE active = 'Yes' AND id_categorie = :id_categorie ORDER BY libelle";
@@ -51,33 +51,27 @@ function foodlistpl($id)
     return $platLStatement;
 }
 
-function btn_left($id)
+function btn_left(int $id)
 {
     global $mysqlClient;
-    $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
-    $req->execute(params: [
-        'id' => $id - 1]);
+    $req = $mysqlClient->prepare('SELECT id, libelle FROM categorie WHERE id < :id AND active = "Yes" ORDER BY id DESC LIMIT 1');
+    $req->execute(['id' =>$id]);
 
-    $resultatL = $req->fetch();
-
-    return $resultatL;
+    return $req->fetch();
 }
 
-function btn_right($id)
+function btn_right(int $id)
 {
     global $mysqlClient;
-    $req = $mysqlClient->prepare(query: 'SELECT id, libelle, active FROM categorie WHERE id = :id');
-    $req->execute(params: [
-        'id' => $id + 1]);
+    $req = $mysqlClient->prepare('SELECT id, libelle FROM categorie WHERE id > :id AND active = "Yes" ORDER BY id ASC LIMIT 1');
+    $req->execute(['id' => $id]);
 
-    $resultatR = $req->fetch();
-
-    return $resultatR;
+    return $req->fetch();
 }
 
 // ------ platunique.php <=
 
-function pl_unique_verif($id)
+function pl_unique_verif(int $id)
 {
     global $mysqlClient;
     $req = $mysqlClient->prepare('SELECT id, libelle, active FROM plat WHERE id = :id');
@@ -88,7 +82,7 @@ function pl_unique_verif($id)
     return $resultat;
 }
 
-function pl_list($id)
+function pl_list(int $id)
 {
     global $mysqlClient;
     $sqlQuery = 'SELECT * FROM plat WHERE id = :id ORDER BY libelle';
