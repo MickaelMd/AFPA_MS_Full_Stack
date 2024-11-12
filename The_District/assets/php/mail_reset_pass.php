@@ -51,6 +51,7 @@ if ($mail){
     try {
         $mail->send();
         echo 'Email envoyé avec succès';
+        echo ' <meta http-equiv="refresh" content="0;url=mail_success.php">';
         } catch (Exception $e) {
         echo "L'envoi de mail a échoué. L'erreur suivante s'est produite : ", $mail->ErrorInfo;
         }

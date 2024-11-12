@@ -1,29 +1,30 @@
 <?php 
 require_once __DIR__.'/../assets/php/connect.php';
 require_once __DIR__.'/../assets/php/head.php'; 
+
+
+// unset($_SESSION['commande_list']);
+
+//  $where = [16,16,12,13,4,5, 'a', 'b'];
+//         $_SESSION['commande_list'] = $where;
+
+// require_once __DIR__.'/../assets/php/commande_verif.php'; 
+
 ?>
 
 <body>
     <div class="container">
         <?php 
         require_once __DIR__.'/../assets/php/header.php';
-        
-        // $where = [16,16,12,13,4,5];
-        // $_SESSION['commande_list'] = $where;
 
-        $commande_list = commande_list_plat($_SESSION['commande_list']);
-        $quantites = array_count_values($_SESSION['commande_list']);
-
-        echo count($_SESSION['commande_list']);
+        // print_r($_SESSION['commande_list']);
+        // echo count($_SESSION['commande_list']);
         ?>
 
-        <section class="mt-5">
+        <section class="mt-5" id="commande_list_section">
 
             <?php 
         
-        print_r($_SESSION['commande_list']);
-
-
         if (count($_SESSION['commande_list']) <= 0) {
 
             echo '<h1>Votre commande est vide.</h1>';
@@ -36,6 +37,7 @@ require_once __DIR__.'/../assets/php/head.php';
             <hr>
 
             <form action="" method="post">
+                <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                 <section id="sec_cards_plat_cat" class="row">
                     <?php
                     foreach ($commande_list as $platLs):
@@ -59,7 +61,7 @@ require_once __DIR__.'/../assets/php/head.php';
                                 <h4 class="card-title"><?= $libelle ?></h4>
                                 <p class="card-text font_text"><?= $description ?></p>
                                 <p class="font_text show_price"><?= number_format($prix, 2) ?>€</p>
-                                <input type="number" name="quantite[<?= $platLs['id'] ?>]" class="form-control" min="0"
+                                <input type="number" name="quantite<?= $platLs['id'] ?>" class="form-control" min="0"
                                     value="<?= $quantite ?>" style="width: 100px;">
                                 <?php if ($quantite > 0): ?>
                                 <p class="mt-2">Quantité : <?= $quantite ?></p>
@@ -76,18 +78,15 @@ require_once __DIR__.'/../assets/php/head.php';
                 <button type="submit" name="update_commande" class="btn btn-primary mt-4">Mettre à jour la
                     commande</button>
                 <form action="" method="post">
+                    <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
                     <button type="submit" name="delete_commande" class="btn btn-danger mt-4">Supprimer la
                         commande</button>
                 </form>
-
             </form>
-
 
         </section>
         <hr>
-
-
-        <section>
+        <section id="total_section_commande_list">
             <?php
     $total = 0;
     foreach ($commande_list as $platLs) {
@@ -98,24 +97,17 @@ require_once __DIR__.'/../assets/php/head.php';
     }
     ?>
             <h1>Total de la commande : <?= number_format($total, 2) ?>€</h1>
+            <a href="commande_final.php" name="validate_commande" class="btn btn-success mt-4">Finalisé la
+                commande</a>
 
-            <form action="" method="post">
-                <button type="submit" name="validate_commande" class="btn btn-success mt-4">Finalisé la
-                    commande</button>
-            </form>
         </section>
 
         <?php } ?>
     </div>
 
-    <?php require_once __DIR__.'/../assets/php/footer.php'; ?>
+    <?php require_once __DIR__.'/../assets/php/footer.php'; 
+    require_once __DIR__.'/../assets/php/commande_update_delete.php'; ?>
 
 </body>
 
 </html>
-
-
-<?php if (isset($_POST["delete_commande"])) {
-   unset($_SESSION['commande_list']);
-   echo "<meta http-equiv='refresh' content='0'>";
-}

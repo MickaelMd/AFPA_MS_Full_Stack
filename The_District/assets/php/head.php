@@ -99,6 +99,11 @@
         echo '
         <title>The District : Commande</title>';
     }
+    if (basename($_SERVER['SCRIPT_NAME']) == 'commande_final.php') {
+        echo '
+        <script src="../assets/js/commande_final.js" defer></script>
+        <title>The District : Commande Final</title>';
+    }
 
     ?>
 

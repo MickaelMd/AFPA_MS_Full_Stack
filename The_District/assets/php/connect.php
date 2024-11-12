@@ -49,7 +49,7 @@ if (isset($_SESSION['email'])) {
         unset($_SESSION['nom_client']);
         unset($_SESSION['uuid']);
         unset($_SESSION['csrf']);
-        // unset($_SESSION['shopping_list_count']);
+        unset($_SESSION['commande_list']);
 
         if (ini_get(option: 'session.use_cookies')) {
             setcookie(session_name(), '', time() - 42000);
@@ -72,3 +72,5 @@ if (!isset($_SESSION['commande_list'])) {
     $_SESSION['commande_list'] = [];
 
 }
+
+require_once __DIR__.'/commande_verif.php'; 
