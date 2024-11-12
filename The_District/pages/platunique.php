@@ -6,12 +6,11 @@ if (!isset($_GET['plat'])) {
     exit();
 }
 
-
-
 $id = $_GET['plat'];
 
 if (!is_numeric($id) || (int) $id <= 0) {
     echo '<h1>Erreur : ID de plat invalide.</h1>';
+    echo '<meta http-equiv="refresh" content="0;url=' . $ip_link . '/pages/404.php">';
     exit;
 }
 
@@ -19,6 +18,7 @@ $resultat = pl_unique_verif($id);
 
 if (!$resultat) {
     echo "<h1>Erreur : Le plat demandé n'existe pas.</h1>";
+    echo '<meta http-equiv="refresh" content="0;url=' . $ip_link . '/pages/404.php">';
     exit;
 }
 

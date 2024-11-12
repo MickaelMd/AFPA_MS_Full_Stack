@@ -9,13 +9,14 @@ if (!isset($_GET['categorie'])) {
 
 $id = $_GET['categorie'];
 if (!filter_var($id, FILTER_VALIDATE_INT)) {
+    echo '<meta http-equiv="refresh" content="0;url=' . $ip_link . '/pages/404.php">';
     exit('ID invalide.');
 }
 
 $resultat = foodlist($id);
 $platLStatement = foodlistpl($id);
 
-$name = $resultat ? htmlspecialchars($resultat['libelle'], ENT_QUOTES, 'UTF-8') : "La catégorie demandée n'existe pas.";
+$name = $resultat ? htmlspecialchars($resultat['libelle'], ENT_QUOTES, 'UTF-8') : "La catégorie demandée n'existe pas. <meta http-equiv=\"refresh\" content=\"0;url=/pages/404.php\">";
 
 $platL = $platLStatement->fetchAll();
 
