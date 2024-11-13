@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 28 oct. 2024 à 13:12
+-- Généré le : mer. 13 nov. 2024 à 15:21
 -- Version du serveur : 10.11.8-MariaDB-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.6
 
@@ -80,12 +80,18 @@ INSERT INTO `clients` (`id`, `nom_client`, `nom`, `prenom`, `email`, `telephone`
 (2, '', 'Smith', 'jogn', 'time@tardis.fr', '0787562623', '7 rue des test 80000 amiens', '$2y$10$4YnxFhGXNV9G2O8Y13Zmveio51IWVfqkrc9Z2i2qYar5TlujDYMri', '2024-09-12', '217aeab3-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (3, '', 'dada', 'dada', 'dada@dada.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$V6Wb5xszUUA1bTqYZKld0.Oy5bert5kvzIM20cU50ucZ7GRLfhNAS', '2024-09-12', '4d527811-70d9-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (4, '', 'dada', 'dada', 'dada@dadada.fr', '0785568962', '498 rue du test, 80450 amiens', '$2y$10$06JYz1ICntVpZYAddMTxHO5HQVOAkwwwUWM/m4.Q6PHwnokoi//Fq', '2024-09-12', '4601a92b-70da-11ef-8e51-8d3f9323f76f', 1, 0, 0),
-(6, 'admin prenom admin nom', 'admin nom', 'admin prenom', 'admin@admin.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$BINPYNXiKNimBh70f13cNut0yJPc3zMuaR9Y/wSUY80dv/YaYwuIW', '2024-09-12', '496f8b69-70dd-11ef-8e51-8d3f9323f76f', 1, 0, 1),
 (7, '', 'Smith-test', 'test', 'jhon@test.com', '06 48 78 12 65', '5659 Rue Du Test 44865 Terre', '$2y$10$2AiymcPeIO/BJmaDGttmCeyyJsCMvNgxszjoXw1dc.lC1051yup.a', '2024-09-12', 'f561c15b-70eb-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (8, '', 'nom-test', 'prénom-test', 'email@testtest4.com', '07 87 56 26 23', '125 rue du tour, 75000  Paris', '$2y$10$xdjVGnRwBSH/BV9NU0mOGO.WL59qUxXR6.gitiXyNBGT0CbFbqgRG', '2024-09-12', '73b39216-70ec-11ef-8e51-8d3f9323f76f', 1, 0, 0),
 (9, '', 'user', 'test', 'testuser@user.com', '0707070707', '7 rue des test 80000 amiens', '$2y$10$c357EK9gID5QMmhni4XjIu0t9zJmTEr2kNATk3OOI5wA/2nJ6XVoa', '2024-09-16', 'd16fd948-73fa-11ef-8e4b-8d3e911ee009', 1, 0, 0),
 (10, 'Test prénom Test nom', 'test nom', 'test prénom', 'test@emailnewtest.fr', '0707070707', '7 rue des test 80000 amiens', '$2y$10$UfV804A9JQtGmI/fRWi.Ke0yFrdtKSpLge33K2vgugSrXy14vRdfC', '2024-09-16', 'af6b2b7b-7406-11ef-8e4b-8d3e911ee009', 1, 0, 0),
-(11, 'Test Test', 'test', 'test', 'testuser123@gmail.com', '0707070707', '7 rue du test 80000 amiens ', '$2y$10$HScU42wauT6Lq3FWbpGXVOSk.7zHzUsAQ4d9.OEXDiFwXoEUqFlo.', '2024-10-09', '64f14fa2-862d-11ef-891b-c7d8e5f31179', 1, 0, 0);
+(11, 'Test Test', 'test', 'test', 'testuser123@gmail.com', '0707070707', '7 rue du test 80000 amiens ', '$2y$10$HScU42wauT6Lq3FWbpGXVOSk.7zHzUsAQ4d9.OEXDiFwXoEUqFlo.', '2024-10-09', '64f14fa2-862d-11ef-891b-c7d8e5f31179', 1, 0, 0),
+(12, 'Testrename Testname', 'testname', 'testrename', 'test@test4545.com', '0707070707', '7 Rue du test 80000 Amiens', '$2y$10$monL7M1gthQth4fV0a6Yg.WFLz2qqxRfru0P4qalvYsjPCcCGp6dO', '2024-10-29', '6b3993a7-95ea-11ef-8965-c8dcf537345e', 1, 0, 0),
+(13, 'Testname Testname', 'testname', 'testname', 'test486441684@gmail.com', '0707070707', '7 rue du test 80000 amiens', '$2y$10$gdwFXG05IjAZaCaSYaXrnOhN92gZMzCt9Nqi/trySnfgMT2qzRWeq', '2024-10-29', '53a9b61e-95f0-11ef-8965-c8dcf537345e', 1, 0, 0),
+(14, 'Te Te', 'te', 'te', 'te4484@gmail.com', '0707070707', '7 rue du test 80000 amiens', '$2y$10$5kbbVfoikl0i1X33dz3OCeESZOjtvOdRhcguQtXUNhvdcDo.XJgc6', '2024-10-29', 'f445cb77-95f0-11ef-8965-c8dcf537345e', 1, 0, 0),
+(15, 'Test Testname', 'testname', 'test', 'testuser124843@gmail.com', '0707070707', '7 rue du test 80000 amiens ', '$2y$10$V9kFSosN9vtAx8f6Egt/E.fi18qVaJHPtf.aAov.mZsUNHcRd7QIu', '2024-10-29', '1b11f20d-95f1-11ef-8965-c8dcf537345e', 1, 0, 0),
+(16, 'Da Te', 'te', 'da', 'testuser1da23@gmail.com', '0707070707', '7 rue du test 80000 amiens', '$2y$10$pf34d5XVNUdX/WfDL9rdV./hhSI9na.S3l8UYeuIU8sfTFimiqxIK', '2024-10-29', '71b884c7-95f1-11ef-8965-c8dcf537345e', 1, 0, 0),
+(22, 'Admin Admin', 'Admin', 'admin', 'admin@admin.fr', '0707070707', '7 rue du test 80000 amiens', '$2y$10$NQhyjTu58myAt59/aXxSUOdt0QeudyK3t6dMx2eUJgUkKg0SEjiOi', '2024-10-31', '007a32d6-978d-11ef-8918-c7d8e5f0064b', 1, 0, 1),
+(23, 'Test Te', 'te', 'test', 'testuser12ddd3@gmail.com', '0707070707', '7 rue du test 80000 amiens', '$2y$10$SL6DmasJNLjghq.VjemEo.qNlxKWgq/4Sw97F3Jgu0QyWYn5QtxF2', '2024-10-31', 'e9014c04-9793-11ef-8918-c7d8e5f0064b', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -113,7 +119,7 @@ CREATE TABLE `commande` (
 --
 
 INSERT INTO `commande` (`id`, `id_plat`, `quantite`, `total`, `date_commande`, `etat`, `nom_client`, `telephone_client`, `email_client`, `adresse_client`, `active`, `uuid`) VALUES
-(2, ' 4', '4', '16.00', '2020-11-30 03:52:43', 'En préparation', 'Kelly Dillard', '7896547800', 'kelly@gmail.com', '308 Post Avenue', 1, '6ee69e8f-701c-11ef-94b7-309c232eb309'),
+(2, ' 4', '4', '16.00', '2020-11-30 03:52:43', 'En cours de livraison', 'Kelly Dillard', '7896547800', 'kelly@gmail.com', '308 Post Avenue', 1, '6ee69e8f-701c-11ef-94b7-309c232eb309'),
 (3, ' 5', '2', '20.00', '2020-11-30 04:07:17', 'Annulée', 'Thomas Gilchrist', '7410001450', 'thom@gmail.com', '1277 Sunburst Drive', 1, '6ee69f2d-701c-11ef-94b7-309c232eb309'),
 (4, ' 5', '1', '10.00', '2021-05-04 01:35:34', 'Livrée', 'Martha Woods', '78540001200', 'marthagmail.com', '478 Avenue Street', 1, '6ee69f54-701c-11ef-94b7-309c232eb309'),
 (6, ' 9', '1', '7.00', '2021-07-20 06:10:37', 'Livrée', 'Charlie', '7458965550', 'charlie@gmail.com', '3140 Bartlett Avenue', 1, '6ee69f6f-701c-11ef-94b7-309c232eb309'),
@@ -195,7 +201,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
