@@ -24,10 +24,7 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <a
-                href="/add_form.php"
-                className="text-white hover:text-gray-300"
-              >
+              <a href="/addform/" className="text-white hover:text-gray-300">
                 Ajouter
               </a>
             </li>

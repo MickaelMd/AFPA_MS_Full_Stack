@@ -38,6 +38,7 @@ export class Jsonplaceholder {
           imgElement.src = post.url;
 
           imgElement.classList.add("img");
+          imgElement.style.width = "200px";
 
           linkElement.appendChild(imgElement);
           sectionTest.appendChild(linkElement);
@@ -116,5 +117,68 @@ export class TesTestText extends TestText {
 
   otherfun(other) {
     return 4 + this.other + this.number();
+  }
+}
+
+// -----------------
+
+export class Form {
+  FormInput(forlabel, label, where) {
+    return (
+      (document.getElementById(
+        `${where}`
+      ).innerHTML = `<label for="${forlabel}">${label}</label>
+    <input type="text" maxlength="40" for="${forlabel}"" id="${forlabel}" name="${forlabel}">`),
+      document
+        .getElementById(`${forlabel}`)
+        .addEventListener("input", function () {
+          console.log(document.getElementById(`${forlabel}`).value);
+        })
+    );
+  }
+
+  FormInputDeux(forlabel, label, where) {
+    const form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("class", "form");
+
+    const labelElement = document.createElement("label");
+    labelElement.setAttribute("for", forlabel);
+    labelElement.textContent = label;
+    form.appendChild(labelElement);
+
+    const inputElement = document.createElement("input");
+    inputElement.type = "text";
+    inputElement.maxLength = 40;
+    inputElement.id = forlabel;
+    inputElement.name = forlabel;
+    form.appendChild(inputElement);
+
+    const btn = document.createElement("button");
+    btn.innerText = "reset";
+    btn.setAttribute("type", "reset");
+    btn.setAttribute("id", "btncl");
+    form.appendChild(btn);
+
+    inputElement.addEventListener("input", function () {
+      if (inputElement.value == "") {
+        console.log("vide");
+      } else {
+        fetch(
+          `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${inputElement.value}&utf8=&format=json&origin=*`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            data.query.search.forEach((element) => {
+              console.log(element.title);
+            });
+          })
+          .catch((error) => console.error("Erreur:", error));
+      }
+
+      // console.log(inputElement.value);
+    });
+
+    document.getElementById(where).appendChild(form);
   }
 }
