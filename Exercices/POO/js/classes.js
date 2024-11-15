@@ -170,7 +170,12 @@ export class Form {
           .then((response) => response.json())
           .then((data) => {
             data.query.search.forEach((element) => {
-              console.log(element.title);
+              console.log(
+                element.title +
+                  " / " +
+                  "https://en.wikipedia.org/?curid=" +
+                  element.pageid
+              );
             });
           })
           .catch((error) => console.error("Erreur:", error));
