@@ -121,3 +121,5 @@ document.getElementById("test1_show").addEventListener("click", (e) => {
     })
     .catch((error) => console.error("Erreur:", error));
 });
+
+console.log(text_test);
