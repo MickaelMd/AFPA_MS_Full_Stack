@@ -1,0 +1,10 @@
+html,
+body {
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Host Grotesk", sans-serif;
+  background-color: rgb(8, 8, 8);
+}

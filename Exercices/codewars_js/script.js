@@ -175,16 +175,64 @@
 
 // ----------------
 
-function howMuchILoveYou(nbPetals) {
-  const p = [
-    "I love you",
-    "a little",
-    "a lot",
-    "passionately",
-    "madly",
-    "not at all",
-  ];
+// function howMuchILoveYou(nbPetals) {
+//   const p = [
+//     "I love you",
+//     "a little",
+//     "a lot",
+//     "passionately",
+//     "madly",
+//     "not at all",
+//   ];
 
-  return p[4 - 1];
-}
-console.log(howMuchILoveYou(4));
+//   const loop = nbPetals;
+
+//   if (nbPetals > p.length) {
+//     for (let i = 0; i < loop; i++) {
+//       if (nbPetals > p.length) {
+//         nbPetals = nbPetals - p.length;
+//       }
+//     }
+//   }
+
+//   return p[nbPetals - 1];
+//   // return p[(nbPetals - 1) % 6];
+// }
+
+// console.log(howMuchILoveYou(1058));
+
+// ----------------
+
+// function rentalCarCost(d) {
+//   if (d < 3) {
+//     return d * 40;
+//   }
+//   if (d >= 3 && d < 7) {
+//     return d * 40 - 20;
+//   }
+//   if (d >= 7) {
+//     return d * 40 - 50;
+//   }
+// }
+
+// console.log(rentalCarCost(10));
+
+// ----------------
+
+// function twiceAsOld(dadYearsOld, sonYearsOld) {
+//   if (dadYearsOld >= 2 * sonYearsOld) {
+//     return dadYearsOld - 2 * sonYearsOld;
+//   } else {
+//     return 2 * sonYearsOld - dadYearsOld;
+//   }
+// }
+
+// console.log(twiceAsOld(55, 30));
+
+// ----------------
+
+// function square(no) {
+//   return no * no;
+// }
+
+// ----------------
