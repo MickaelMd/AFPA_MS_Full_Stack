@@ -22,6 +22,16 @@ function removeImage() {
       delImage.remove();
     }, 600);
   }
+
+  if (images.length > 4) {
+    const delImage = images[0];
+
+    delImage.classList.add("hidden");
+
+    setTimeout(() => {
+      delImage.remove();
+    }, 100);
+  }
 }
 
 export function showImageAnim(setinterval, settimeout, activate) {

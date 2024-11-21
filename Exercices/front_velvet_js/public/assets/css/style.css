@@ -8,7 +8,7 @@ body {
   font-family: "Host Grotesk", sans-serif;
   background-color: rgb(0, 8, 53);
   color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 nav {
@@ -40,23 +40,6 @@ nav {
   font-size: 16pt;
 }
 
-/* 620px */
-/* -------------- */
-
-@media (max-width: 620px) {
-  nav {
-    padding: 0;
-    top: 0;
-  }
-  #btn_one,
-  #btn_two,
-  #btn_three {
-    padding: 0px;
-  }
-}
-
-/* --------------- */
-
 #btn_back {
   display: none;
   padding: 0;
@@ -71,7 +54,7 @@ nav {
 }
 
 .img_index {
-  width: 100px;
+  /* width: 200px; */
   height: auto;
   border-radius: 16px;
   position: absolute;
@@ -93,3 +76,75 @@ nav {
   width: 100px;
   z-index: -200;
 }
+
+/* --------------------- */
+/* --------------------- */
+
+#artist_cards_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  margin: 200px auto 0px auto;
+  max-width: calc((400px) * 4);
+}
+
+.card_artist {
+  flex: 1 1 calc(33.33% - 40px);
+  max-width: 400px;
+  padding: 20px;
+  margin: 10px;
+  background: rgba(0, 41, 44, 0.322);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.card_artist h1 {
+  text-align: center;
+}
+.card_artist img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.card_artist a {
+  text-decoration: underline;
+  color: white;
+}
+.card_artist a:hover {
+  color: rgb(124, 124, 124);
+  transition: 120ms;
+}
+
+/* -------------- */
+
+@media (max-width: 620px) {
+  nav {
+    padding: 0;
+    /* top: 0; */
+  }
+  #btn_one,
+  #btn_two,
+  #btn_three {
+    padding: 0px;
+  }
+  .img_index.visible {
+    width: 150px;
+  }
+}
+
+@media (max-width: 490px) {
+  .card_artist img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card_artist {
+    flex: 1 1 calc(33.33% - 40px);
+    max-width: 300px;
+  }
+}
+
+/* --------------- */
