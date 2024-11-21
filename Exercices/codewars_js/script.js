@@ -236,3 +236,44 @@
 // }
 
 // ----------------
+
+// function scramble(str1, str2) {
+//   let count = 0;
+//   let array = [];
+//   let str2Array = str2.split("");
+
+//   for (let i = 0; i < str1.length; i++) {
+//     let index = str2Array.indexOf(str1[i]);
+
+//     if (index !== -1) {
+//       array.push(str1[i]);
+//       count++;
+//       str2Array.splice(index, 1);
+//     }
+//   }
+
+//   if (count >= str2.length) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(scramble("scriptsjava", "javascripts"));
+// console.log(scramble("katas", "steak"));
+
+// ----------------
+
+function camelCase(str) {
+  let array = str.split(" ");
+  let newstr = "";
+  for (let i = 0; i < array.length; i++) {
+    let strloop =
+      String(array[i]).charAt(0).toUpperCase() + String(array[i]).slice(1);
+    newstr = newstr + strloop;
+  }
+
+  return newstr;
+}
+
+console.log(camelCase("test de function"));
