@@ -264,16 +264,58 @@
 
 // ----------------
 
-function camelCase(str) {
-  let array = str.split(" ");
-  let newstr = "";
-  for (let i = 0; i < array.length; i++) {
-    let strloop =
-      String(array[i]).charAt(0).toUpperCase() + String(array[i]).slice(1);
-    newstr = newstr + strloop;
-  }
+// function camelCase(str) {
+//   let array = str.split(" ");
+//   let newstr = "";
+//   for (let i = 0; i < array.length; i++) {
+//     let strloop =
+//       String(array[i]).charAt(0).toUpperCase() + String(array[i]).slice(1);
+//     newstr = newstr + strloop;
+//   }
 
-  return newstr;
-}
+//   return newstr;
+// }
 
-console.log(camelCase("test de function"));
+// console.log(camelCase("test de function"));
+//! _------_ !//
+
+// String.prototype.camelCase = function () {
+//   let array = this.split(" ");
+//   let newstr = "";
+//   for (let i = 0; i < array.length; i++) {
+//     let strloop = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+//     newstr = newstr + strloop;
+//   }
+//   return newstr;
+// };
+
+// console.log("camel case word".camelCase());
+
+// ----------------
+
+// function reverseWords(str) {
+//   let array = [];
+//   for (let i = 0; i < str.length; i++) {
+//     array.unshift(str[i]);
+//   }
+
+//   return array.join("");
+// }
+
+// console.log(myFunction("!elpmaxe na si sihT"));
+
+// function reverseWords(str) {
+//   return str.split("").reverse().join("").split(" ").reverse().join(" ");
+// }
+
+// ----------------
+
+// function add(n) {
+//   const cal = (m) => add(n + m);
+//   cal.valueOf = () => n;
+//   return cal;
+// }
+
+// console.log(add(1)(2)(3)(4)(5).valueOf());
+
+// ----------------

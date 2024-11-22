@@ -30,7 +30,7 @@ function removeImage() {
 
     setTimeout(() => {
       delImage.remove();
-    }, 100);
+    }, 300);
   }
 }
 
