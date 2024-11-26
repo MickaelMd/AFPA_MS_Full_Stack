@@ -59,12 +59,7 @@ if (isset($_POST['cat_select']) && filter_var($_POST['cat_select'], FILTER_VALID
   admin_active_plat_price($select_id);
 
   echo "<meta http-equiv='refresh' content='0'>";
-
-} else {
-    echo "Erreur !";
 }
-
-
 // ------------------- Update / add Food --------------
 
 if (isset($_POST['submit_add_categorie'])) {
