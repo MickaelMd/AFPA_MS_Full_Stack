@@ -40,7 +40,7 @@
     }
     if (basename($_SERVER['SCRIPT_NAME']) == 'admin.php') {
         echo '<link rel="stylesheet" href="../assets/css/admin.css">
-            <script src="../assets/js/admin.js"></script>
+            <script src="../assets/js/admin.js" defer></script>
          <title>The District : Administration</title>';
     }
     if (basename($_SERVER['SCRIPT_NAME']) == 'contact.php') {
