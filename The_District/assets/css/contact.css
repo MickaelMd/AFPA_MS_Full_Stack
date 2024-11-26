@@ -4,6 +4,8 @@
 
 #OSM-map {
   margin-top: 50px;
+  border-radius: 8px;
+  background-color: #f7c5a500;
 }
 
 #contact_form_section {

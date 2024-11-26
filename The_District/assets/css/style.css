@@ -257,7 +257,7 @@ header img {
 
 .cards_cat_mp a:hover {
   background-color: rgba(0, 0, 0, 0.589);
-  transition: 50ms;
+  transition: 120ms;
 }
 
 /* ------- */
@@ -351,7 +351,7 @@ header img {
 
 .cards_pl_mp a:hover {
   background-color: rgba(0, 0, 0, 0.589);
-  transition: 50ms;
+  transition: 120ms;
 }
 
 /* ----------- */

@@ -154,7 +154,7 @@ foreach ($commande as $commandes) {
             <form action="" name="form_enable_plat" method="POST">
                 <select id="categorySelect" class="form-select mt-5" aria-label="Default select example"
                     name="cat_select">
-                    <option value="" disabled selected>Choisissez une catégorie</option>
+                    <option value="" disabled selected class="text-center">Choisissez une catégorie</option>
                     <?php
     foreach ($categorie as $categories) {
         echo '<option class="text-center" value="' . $categories['cat_id'] . '">' . $categories['cat_libelle'] . '</option>';
@@ -198,7 +198,8 @@ foreach ($platL as $platLs) {
                 </table>
                 <button class="btn btn-primary mt-3 w-100" type="submit" name="submit_update_plat">Valider
                     leschangements</button>
-                <button class="btn btn-info mt-3 w-100" type="submit" name="submit_update_plat_price">Augmenter les prix
+                <button class="btn btn-info mt-3 w-100" id="btn_aug_price" type="submit" name="submit_update_plat_price"
+                    disabled>Augmenter les prix
                     de la catégorie de 10%</button>
             </form>
         </section>

@@ -95,6 +95,14 @@ document.addEventListener("keydown", function (event) {
       input_search.focus();
     }
   }
+  if (event.key === "Escape") {
+    // event.preventDefault();
+
+    if (input_search) {
+      input_search.blur();
+      search_zone.style.display = "none";
+    }
+  }
 });
 
 // -------------------

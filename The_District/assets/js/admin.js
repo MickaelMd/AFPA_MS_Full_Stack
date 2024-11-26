@@ -51,3 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+const aug_price = document.getElementById("categorySelect");
+const btn_aug_price = document.getElementById("btn_aug_price");
+
+aug_price.addEventListener("change", () => {
+  btn_aug_price.removeAttribute("disabled");
+});
