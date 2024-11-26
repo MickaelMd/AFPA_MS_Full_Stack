@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/assets/php/connect.php';
 $categorie = index_categorie_list(6);
-$platindex = plat_index_list(3);
+$platindex = plat_index_list_by_com(3);
 
 require_once __DIR__.'/assets/php/head.php'; 
 ?>

@@ -14,6 +14,31 @@ function index_categorie_list(int $limit)
     return $categorie;
 }
 
+// --
+
+function plat_index_list_by_com(int $limit)
+{
+    global $mysqlClient;
+
+    $sqlQueryy = "SELECT plat.*, COUNT(commande.id_plat) AS total_commandes
+                FROM plat
+                LEFT JOIN commande ON commande.id_plat = plat.id
+                WHERE plat.active = 'Yes'
+                GROUP BY plat.id
+                ORDER BY total_commandes DESC
+                LIMIT :limit
+    ";
+
+    $platStatement = $mysqlClient->prepare($sqlQueryy);
+    $platStatement->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $platStatement->execute();
+    $platindex = $platStatement->fetchAll();
+
+    return $platindex;
+}
+
+// --
+
 function plat_index_list(int $limit)
 {
     global $mysqlClient;
@@ -334,6 +359,23 @@ function admin_active_plat($activeStatus, $platId)
         ':active' => $activeStatus,
         ':id' => $platId, ]);
 }
+
+function admin_active_plat_price(int $id)
+{
+    global $mysqlClient;
+
+    $updateQuery = 'UPDATE plat
+                    JOIN categorie ON categorie.id = plat.id_categorie
+                    SET plat.prix = ROUND(plat.prix * 1.10, 2)
+                    WHERE categorie.id = :category_id
+    ';
+    $updateStatement = $mysqlClient->prepare($updateQuery);
+
+    $updateStatement->execute([
+        ':category_id' => $id,
+    ]);
+}
+
 
 // ------ assets/php/insertcat.php <=
 
