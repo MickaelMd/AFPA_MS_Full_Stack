@@ -418,8 +418,8 @@ function commande_list_plat(array $where)
 }
 
 function platExists($id) {
-    global $mysqlClient; // Utilisation de la variable globale
-    $stmt = $mysqlClient->prepare("SELECT COUNT(*) FROM plat WHERE id = :id"); // Changez 'plats' et 'id' selon votre table
+    global $mysqlClient; 
+    $stmt = $mysqlClient->prepare("SELECT COUNT(*) FROM plat WHERE id = :id"); 
     $stmt->execute(['id' => $id]);
-    return $stmt->fetchColumn() > 0; // Retourne true si l'ID existe, sinon false
+    return $stmt->fetchColumn() > 0; 
 }
