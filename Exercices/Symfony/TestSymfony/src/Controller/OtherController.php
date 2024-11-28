@@ -23,6 +23,6 @@ class OtherController extends AbstractController
     
     public function indexid(Request $request, string $test, int $id): Response
     {
-       dd($test, $id);
+      return  dd($test, $id);
     }
 }
