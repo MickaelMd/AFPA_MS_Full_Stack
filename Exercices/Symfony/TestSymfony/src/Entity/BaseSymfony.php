@@ -4,6 +4,10 @@ namespace App\Entity;
 
 use App\Repository\BaseSymfonyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Name;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route as AttributeRoute;
+use Symfony\Component\Routing\Router;
 
 #[ORM\Entity(repositoryClass: BaseSymfonyRepository::class)]
 class BaseSymfony
@@ -39,4 +43,6 @@ class BaseSymfony
 
         return $this;
     }
+
+    
 }
