@@ -17,9 +17,17 @@ class HomeController extends AbstractController {
       
         $items = $repository->findAll();
 // dd($items[1]);
+
+
         
         return $this->render('home/index.html.twig', [
             'items' => $items
         ]);
     }
+
+
+
+    // #[Route('/', name: "home" )]
+    // public function edit()
+
 }

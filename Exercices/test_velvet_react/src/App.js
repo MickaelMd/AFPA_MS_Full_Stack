@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import DiscList from "./components/DiscList";
-import DiscDetails from "./components/DiscDetails"; // Importe le composant DiscDetails
+import DiscDetails from "./components/DiscDetails";
 import NotFound from "./components/NotFound";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 function App() {
   const [discs, setDiscs] = useState([]);
@@ -31,6 +32,7 @@ function App() {
         {/* Nouvelle route pour les détails du disque */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

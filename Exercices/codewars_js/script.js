@@ -319,3 +319,15 @@
 // console.log(add(1)(2)(3)(4)(5).valueOf());
 
 // ----------------
+
+// function paperwork(n, m) {
+//   let cal = n * m;
+
+//   if (n <= 0 || m <= 0) {
+//     return 0;
+//   } else {
+//     return cal;
+//   }
+// }
+
+// console.log(paperwork(-5, -5));
