@@ -331,3 +331,22 @@
 // }
 
 // console.log(paperwork(-5, -5));
+
+// ----------------
+
+// function findShort(s) {
+//     const array = s.split(" ");
+
+//     let count = 10000;
+
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i].length <= count) {
+//         count = array[i].length;
+//       }
+//     }
+//     return count;
+//   }
+
+//   console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
+
+// ----------------

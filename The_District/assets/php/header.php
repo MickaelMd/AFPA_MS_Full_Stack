@@ -1,8 +1,7 @@
 <nav class="navbar bg-body-tertiary navbar-expand-md fixed-top bg-blur">
     <div class="container-fluid">
         <a class="navbar-brand nav_marg" href="<?php echo $ip_link; ?>/index.php">
-            <img src="<?php echo $ip_link; ?>/assets/img/the_district_brand/nav_logo.svg" alt="Bootstrap" width="150"
-                height="auto" />
+            <img src="<?php echo $ip_link; ?>/assets/img/the_district_brand/nav_logo.svg" alt="Bootstrap" width="150" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

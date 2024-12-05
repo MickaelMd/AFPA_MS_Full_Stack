@@ -26,11 +26,13 @@ require_once __DIR__.'/assets/php/head.php';
                 </div>
                 <?php endforeach; ?>
             </div>
-            <a class="d-flex text-decoration-none" href="pages/categorie.php">
-                <button type="button" class="btn btn-lg btn-info mt-3">
+
+            <div class="d-flex justify-content-center">
+                <a class="d-inline-flex p-2 text-decoration-none btn-info mt-3 btn fs-5" href="pages/categorie.php">
                     TOUTES LES CATÉGORIES
-                </button>
-            </a>
+                </a>
+            </div>
+
             <br />
             <div class="mt-5 list_cat_mp mart-20">
                 <?php foreach ($platindex as $plats): ?>
@@ -47,11 +49,11 @@ require_once __DIR__.'/assets/php/head.php';
                 </div>
                 <?php endforeach; ?>
             </div>
-            <a class="d-flex text-decoration-none" href="pages/plats.php">
-                <button type="button" class="btn btn-info mt-3">
+            <div class="d-flex justify-content-center">
+                <a class="d-inline-flex p-2 text-decoration-none btn-info mt-3 btn fs-5" href="pages/plats.php">
                     TOUS LES PLATS
-                </button>
-            </a>
+                </a>
+            </div>
         </section>
     </div>
     <?php require_once __DIR__.'/assets/php/footer.php'; ?>
