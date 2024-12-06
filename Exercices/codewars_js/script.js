@@ -350,3 +350,57 @@
 //   console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
 
 // ----------------
+
+// function toUnderscore(string) {
+//   if (typeof string === "number") {
+//     return string.toString();
+//   }
+
+//   const array = string.split("");
+//   let newstring = "";
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] === array[i].toUpperCase() && isNaN(array[i])) {
+//       newstring = newstring + "_" + array[i].toLowerCase();
+//     } else {
+//       newstring = newstring + array[i];
+//     }
+//   }
+
+//   if (newstring[0] === "_") {
+//     newstring = newstring.substring(1);
+//   }
+
+//   return newstring;
+// }
+
+// console.log(toUnderscore("TesTest"));
+
+// ----------------
+
+// function XO(str) {
+//   const array = str.split("");
+//   let x = 0;
+//   let o = 0;
+
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] === "x" || array[i] === "X") {
+//       x++;
+//     }
+//     if (array[i] === "o" || array[i] === "O") {
+//       o++;
+//     }
+//   }
+
+//   if (o + x == 0) {
+//     return true;
+//   }
+//   if ((o == x)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(XO("dz"));
+
+// ----------------
